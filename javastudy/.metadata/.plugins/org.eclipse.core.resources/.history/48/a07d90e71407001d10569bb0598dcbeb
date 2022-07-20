@@ -1,0 +1,13 @@
+package ex03_number;
+
+public class Ex03 {
+
+	public static void main(String[] args) {
+		
+		// 대입 연산
+		int score = 100; // 등호(=)
+		
+
+	}
+
+}
