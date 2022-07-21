@@ -11,7 +11,7 @@ public class Ex03 {
 		
 		int score = 100;
 		String result = (score >= 60) ? "합격" : "불합격"; // 60점 이상일 때, 합격
-		System.out.println(result);
+		System.out.println(result); // 합격
 		
 		
 		// 연습문제
@@ -27,7 +27,7 @@ public class Ex03 {
 		
 		
 		// 연습문제
-		// 홀수는 "홀수", 짝수는 "작수"
+		// 홀수는 "홀수", 짝수는 "짝수"
 		// 힌트.
 		// 홀수 - 2로 나눈 나머지가 1인 수
 		// 짝수 - 2로 나눈 나머지가 0인 수

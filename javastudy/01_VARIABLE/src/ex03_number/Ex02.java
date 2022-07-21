@@ -29,9 +29,9 @@ public class Ex02 {
 		int j = 1;
 		int result = i++ + --j;
 		// 계산 추론//
-		System.out.println(i);
-		System.out.println(j);
-		System.out.println(result);
+		System.out.println(i);  	 // 2
+		System.out.println(j);  	 // 1
+		System.out.println(result);  // 0
 		
 		
 	}
