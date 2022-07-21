@@ -26,7 +26,7 @@ public class Ex03_break {
 		
 		
 		int total = 0;			// 현재 00원
-		int money = 30;			// 모금액 30원
+		int money = 50000;			// 모금액 30원
 		int serial = 0;			// n회
 		int goal = 1000000;		// 목표금액
 		while(true) {
@@ -38,6 +38,8 @@ public class Ex03_break {
 			serial++;
 			System.out.println(serial + "회 모금액 " + money + "원" + "\t현재 " + total + "원");
 		}
+			
+		
 
 	}
 

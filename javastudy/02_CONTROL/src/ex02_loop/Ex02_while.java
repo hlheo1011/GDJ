@@ -24,6 +24,7 @@ public class Ex02_while {
 			System.out.println("잔액 " + balance + " 인출액 " + money); 
 			balance -= money;
 		}
+		System.out.println();
 		System.out.println("잔액 " + balance);		
 		
 		// 예시 할게 없다.. 있긴 있으나 도움이 안됨.
