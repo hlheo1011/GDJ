@@ -28,14 +28,14 @@ public class Ex01 {													// class 상위 = Math
 		// (int)(Math.random() * 5)			0   <= n < 5				// 강제 형 변환
 		// (int)(Math.random() * 5) + 1		1   <= n < 6				// 1부터 5개의 난수가 발생한다.
 		
-		// 연습.
+		// 연습예제
 		// 주사위 2개 던지기
 		for(int n = 0; n < 2; n++) {
 			int dice = (int)(Math.random() * 6) + 1;
 			System.out.println("주사위" + dice);
 		}
 		
-		// 연습.
+		// 연습. (난수)
 		// 6자리 숫자 인증번호 만들기\
 		// String code = "501924"		
 		String code = "";							// string을 int로 하면 안됨. 앞자리가 0인경우는 생략되며, 합산됨
@@ -56,7 +56,7 @@ public class Ex01 {													// class 상위 = Math
 		System.out.println((char)((int)(Math.random() * 26) + 'a'));
 		
 		
-		// 연습.
+		// 연습. (난수)
 		// 대문자와 소문자를 말 그대로 랜덤하게 섞어서 6자리
 		code = "";			// 변수(?) 초기화
 		
