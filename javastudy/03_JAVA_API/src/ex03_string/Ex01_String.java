@@ -157,7 +157,7 @@ public class Ex01_String {
 		
 		// 주의. replaceAll() 메소드는 특정 문자열을 찾아서 변환하는 것이 아님.
 		String ip = "192.168.101.91";
-		String replacedIp = ip.replaceAll(".", "_");	// 192_168_10_101_91
+		String replacedIp = ip.replaceAll(".", "_");	// 192_168_10_101_91 를 기대하지만,
 		System.out.println(replacedIp);
 		
 		
