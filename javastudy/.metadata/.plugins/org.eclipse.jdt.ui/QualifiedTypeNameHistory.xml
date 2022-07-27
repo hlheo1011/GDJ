@@ -21,4 +21,7 @@
     <fullyQualifiedTypeName name="ex01_field.UserMain"/>
     <fullyQualifiedTypeName name="ex02_field.Student"/>
     <fullyQualifiedTypeName name="ex02_field.School"/>
+    <fullyQualifiedTypeName name="ex03_method.Calculator"/>
+    <fullyQualifiedTypeName name="ex04_method.VendingMachine"/>
+    <fullyQualifiedTypeName name="ex06_method_overload.Calculator"/>
 </qualifiedTypeNameHistroy>

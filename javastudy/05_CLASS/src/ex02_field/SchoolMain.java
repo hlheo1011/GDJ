@@ -19,10 +19,12 @@ public class SchoolMain {
 		school.students[1] = student2;
 		
 		for(int i = 0; i < school.students.length; i++) {
-			System.out.print(school.students[i].stuNo);
-			System.out.print(school.students[i].name);
+			System.out.println(school.students[i].stuNo);
+			System.out.println(school.students[i].name);
 		}
 		
+		School school2 = new School();
+		school.name = "경인중학교";
 		
 		
 		/*
