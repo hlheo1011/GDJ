@@ -26,4 +26,7 @@
     <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="sun.util.resources.cldr.CalendarData"/>
     <fullyQualifiedTypeName name="java.util.Calendar"/>
+    <fullyQualifiedTypeName name="ex07_constructor.Computer"/>
+    <fullyQualifiedTypeName name="ex08_access_modifier.User"/>
+    <fullyQualifiedTypeName name="ex09_this.School"/>
 </qualifiedTypeNameHistroy>
