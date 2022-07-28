@@ -12,7 +12,6 @@
     <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
     <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
     <fullyQualifiedTypeName name="java.util.Arrays"/>
-    <fullyQualifiedTypeName name="java.lang.Math"/>
     <fullyQualifiedTypeName name="ex02_two_dim.Ex01_array"/>
     <fullyQualifiedTypeName name="ex01_field.UserMain"/>
     <fullyQualifiedTypeName name="ex02_field.Student"/>
@@ -29,4 +28,8 @@
     <fullyQualifiedTypeName name="ex07_constructor.Computer"/>
     <fullyQualifiedTypeName name="ex08_access_modifier.User"/>
     <fullyQualifiedTypeName name="ex09_this.School"/>
+    <fullyQualifiedTypeName name="java.lang.Math"/>
+    <fullyQualifiedTypeName name="ex11_static.MyMath"/>
+    <fullyQualifiedTypeName name="ex02_is_a.Hybrid"/>
+    <fullyQualifiedTypeName name="ex04_has_a_inherit.Soldier"/>
 </qualifiedTypeNameHistroy>
