@@ -20,16 +20,18 @@
     <fullyQualifiedTypeName name="ex04_method.VendingMachine"/>
     <fullyQualifiedTypeName name="ex06_method_overload.Calculator"/>
     <fullyQualifiedTypeName name="com.sun.java.swing.action.NextAction"/>
-    <fullyQualifiedTypeName name="java.lang.Integer"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="sun.util.resources.cldr.CalendarData"/>
     <fullyQualifiedTypeName name="java.util.Calendar"/>
     <fullyQualifiedTypeName name="ex07_constructor.Computer"/>
     <fullyQualifiedTypeName name="ex08_access_modifier.User"/>
     <fullyQualifiedTypeName name="ex09_this.School"/>
-    <fullyQualifiedTypeName name="java.lang.Math"/>
     <fullyQualifiedTypeName name="ex11_static.MyMath"/>
     <fullyQualifiedTypeName name="ex02_is_a.Hybrid"/>
     <fullyQualifiedTypeName name="ex04_has_a_inherit.Soldier"/>
+    <fullyQualifiedTypeName name="java.lang.Math"/>
+    <fullyQualifiedTypeName name="sun.java2d.loops.ScaledBlit"/>
+    <fullyQualifiedTypeName name="pratice02.VendingMachine"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
 </qualifiedTypeNameHistroy>

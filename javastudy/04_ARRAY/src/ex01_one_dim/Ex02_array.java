@@ -24,6 +24,17 @@ public class Ex02_array {
 		
 		System.out.println("최대 : " + max);
 		System.out.println("최소 : " + min);
+		
+		
+
+		String[] arr2 = {"라이언", "춘식이"};
+		String lion = arr2[0];
+		String chunSick = arr2[1];
+		
+		System.out.println(lion);
+		System.out.println(chunSick);
+		
+		
 	}
 
 }
