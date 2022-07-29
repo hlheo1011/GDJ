@@ -12,14 +12,19 @@ public class Pra02 {
 		// (에스프레소, 카푸치노, 카페라떼는 3500원, 아메리카노는 2000원이다.)
 		
 		Scanner sc = new Scanner(System.in);
+		
 		System.out.print("무슨 커피 드릴까요? >>> ");
 		String menu = sc.next();
-		
+		int price = 0;
 		switch(menu) {
 		case "에스프레소":
 		case "카푸치노":
-		case "카페라떼": System.out.println(menu + "는 3500원 입니다."); break;
-		case "아메리카노": System.out.println(menu + "는 2000원 입니다."); break;
+		case "카페라떼": 
+			price = 3500;
+			System.out.println(menu + "는 " + price + "원 입니다."); break;
+		case "아메리카노": 
+			price = 2000;
+			System.out.println(menu + "는 " + price +  "원 입니다."); break;
 		default : System.out.println(menu + "(은)는 메뉴에 없습니다.");
 		}
 

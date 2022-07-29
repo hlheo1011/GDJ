@@ -21,6 +21,7 @@ public class Ex05 {
 		int min = scores[0];
 		int top = 0;
 		int bottom = 0;
+		
 		for(int i = 1; i < scores.length; i++) {
 			total += scores[i];
 			if(max < scores[i]) {

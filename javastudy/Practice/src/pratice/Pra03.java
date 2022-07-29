@@ -17,25 +17,21 @@ public class Pra03 {
 		int money = sc.nextInt();
 		
 		int[] unit = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 5, 1};
-		
+		int[] count = new int[unit.length];
 		for(int i = 0; i < unit.length; i++) {
-			
-			unit[0] = money / 50000;			// 5만원
-			unit[1] = (money - 50000) / 10000;	// 만원
-			unit[2] = money / 5000;				// 5천원
-			unit[3] = (money - 5000) / 1000;	// 천원	
-			unit[4] = money / 500;				// 오백원
-			unit[5] = (money - 500) / 100;		// 백원
-			unit[6] = money / 50;				// 오십원
-			unit[7] = (money - 50) / 10;		// 십원
-			unit[8] = money / 5;				// 오원
-			unit[9] = (money - 5) / 1;			// 일원		
-			
-			System.out.println(unit[i]);
-		}
+			count[i] = money / unit[i];
+		System.out.println(unit[i] + " 개 " + count[i]);
 		
+		}
+		/* unit[0] = 75832 = 25832 나머지   
+		 * 
+		 */
 
 		
+		
+
+
+		sc.close();
 		
 		// 금액을 입력하시오 >> 75832원
 		// 50000원 짜리 : 1개

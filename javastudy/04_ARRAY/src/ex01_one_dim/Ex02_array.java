@@ -11,7 +11,7 @@ public class Ex02_array {
 
 		// 최대/최소
 		int max = arr[0];
-		int min = arr[0];							// 최소값의 초기값은 0 을 주면 안된다. 0과 비교를 하기 떄문에
+		int min = arr[0];		// 최소값의 초기값은 0 을 주면 안된다. 0과 비교를 하기 떄문에
 		
 		for(int i = 1; i < arr.length; i++) {
 			if(max < arr[i]) {

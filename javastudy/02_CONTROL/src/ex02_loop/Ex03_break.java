@@ -33,7 +33,6 @@ public class Ex03_break {
 			if(total >= goal) {
 				break;
 			}
-			
 			total += money;
 			serial++;
 			System.out.println(serial + "회 모금액 " + money + "원" + "\t현재 " + total + "원");

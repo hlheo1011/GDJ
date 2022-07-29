@@ -1,12 +1,9 @@
 package pratice;
 
-import java.util.Scanner;
-
-public class Pra07 {
+public class Pra09 {
 
 	public static void main(String[] args) {
-		
-
+		// TODO Auto-generated method stub
 
 	}
 
