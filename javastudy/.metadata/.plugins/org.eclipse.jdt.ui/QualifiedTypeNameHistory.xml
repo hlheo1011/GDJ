@@ -45,4 +45,10 @@
     <fullyQualifiedTypeName name="ex07_override.Americano"/>
     <fullyQualifiedTypeName name="ex07_override.CafeLatte"/>
     <fullyQualifiedTypeName name="java.lang.Override"/>
+    <fullyQualifiedTypeName name="ex08_override.Circle"/>
+    <fullyQualifiedTypeName name="ex08_override.Rectangle"/>
+    <fullyQualifiedTypeName name="ex08_override.Shape"/>
+    <fullyQualifiedTypeName name="ex08_override.Square"/>
+    <fullyQualifiedTypeName name="quiz01_coffee.Americano"/>
+    <fullyQualifiedTypeName name="quiz02_coffee.Espresso"/>
 </qualifiedTypeNameHistroy>
