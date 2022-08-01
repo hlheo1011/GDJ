@@ -16,7 +16,6 @@ public class Main {
 		
 		Square square = new Square("정사각형", 5);
 		square.info();
-		
 	}
 
 }
