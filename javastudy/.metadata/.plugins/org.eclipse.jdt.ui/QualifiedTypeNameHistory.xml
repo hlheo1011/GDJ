@@ -37,4 +37,12 @@
     <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="java.lang.Math"/>
     <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="ex05_constructor.Person"/>
+    <fullyQualifiedTypeName name="ex05_constructor.Student"/>
+    <fullyQualifiedTypeName name="ex06_constructor.Student"/>
+    <fullyQualifiedTypeName name="ex06_constructor.Alba"/>
+    <fullyQualifiedTypeName name="ex07_override.Espresso"/>
+    <fullyQualifiedTypeName name="ex07_override.Americano"/>
+    <fullyQualifiedTypeName name="ex07_override.CafeLatte"/>
+    <fullyQualifiedTypeName name="java.lang.Override"/>
 </qualifiedTypeNameHistroy>
