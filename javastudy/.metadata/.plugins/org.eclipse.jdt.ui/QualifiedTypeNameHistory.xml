@@ -57,4 +57,5 @@
     <fullyQualifiedTypeName name="java.lang.Object"/>
     <fullyQualifiedTypeName name="java.lang.Math"/>
     <fullyQualifiedTypeName name="ex13_abstract.Shape"/>
+    <fullyQualifiedTypeName name="quiz06_game.GameUnit"/>
 </qualifiedTypeNameHistroy>
