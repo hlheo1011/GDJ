@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="ex02_two_dim.Ex01_array"/>
-    <fullyQualifiedTypeName name="ex01_field.UserMain"/>
-    <fullyQualifiedTypeName name="ex02_field.Student"/>
-    <fullyQualifiedTypeName name="ex02_field.School"/>
-    <fullyQualifiedTypeName name="ex03_method.Calculator"/>
     <fullyQualifiedTypeName name="ex04_method.VendingMachine"/>
     <fullyQualifiedTypeName name="ex06_method_overload.Calculator"/>
     <fullyQualifiedTypeName name="com.sun.java.swing.action.NextAction"/>
@@ -46,13 +41,8 @@
     <fullyQualifiedTypeName name="ex13_abstract.Shape"/>
     <fullyQualifiedTypeName name="quiz06_game.GameUnit"/>
     <fullyQualifiedTypeName name="User"/>
-    <fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
-    <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
-    <fullyQualifiedTypeName name="lombok.Getter"/>
-    <fullyQualifiedTypeName name="lombok.Setter"/>
     <fullyQualifiedTypeName name="library.Library"/>
     <fullyQualifiedTypeName name="library.Book"/>
-    <fullyQualifiedTypeName name="lombok.ToString"/>
     <fullyQualifiedTypeName name="ex16_interface.Cat"/>
     <fullyQualifiedTypeName name="ex16_interface.Snake"/>
     <fullyQualifiedTypeName name="ex16_interface.Person"/>
@@ -60,4 +50,14 @@
     <fullyQualifiedTypeName name="quiz07_song.Song"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="quiz08_schedule.WeekScheduler"/>
+    <fullyQualifiedTypeName name="ex02_constructor.User"/>
+    <fullyQualifiedTypeName name="ex01_setter.User"/>
+    <fullyQualifiedTypeName name="ex03_singleton.User"/>
+    <fullyQualifiedTypeName name="lombok.Getter"/>
+    <fullyQualifiedTypeName name="lombok.Setter"/>
+    <fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
+    <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
+    <fullyQualifiedTypeName name="lombok.Builder"/>
+    <fullyQualifiedTypeName name="lombok.ToString"/>
+    <fullyQualifiedTypeName name="ex05_lombok.User"/>
 </qualifiedTypeNameHistroy>
