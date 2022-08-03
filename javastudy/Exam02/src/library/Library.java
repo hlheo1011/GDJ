@@ -36,17 +36,21 @@ public class Library {
 			return;
 		}
 		System.out.println("===책삭제===");
-		System.out.print("삭제할 책 번호(1~" + idx + ")입력 >>> ");
-		int bookNo = sc.nextInt() - 1;		// 번호는 1번이지만, 인덱스는 0이기 때문에.
-		if(bookNo < 0 || bookNo >= idx) {
-			System.out.println("책 번호가 " + (bookNo + 1) + "인 책은 없습니다.");
-			return;
+		System.out.print("삭제할 책 번호 >>> ");
+		int bookNo = sc.nextInt();
+		// 번호는 1번이지만, 인덱스는 0이기 때문에.
+		for(int i = 0; i < idx; i++) {
+			if(books[i].getBookNo() == bookNo) {
+				System.arraycopy(books, i + 1, books, i, idx - i - 1);
+				// books, bookNo + 1 < 원본
+				// books, bookNo < 복사하는 곳
+				books[--idx] = null;
+				System.out.println("책 번호가 " + (i + 1) + "인 책을 삭제했습니다.");
+				return;
+			}
 		}
-		System.arraycopy(books, bookNo + 1, books, bookNo, idx - bookNo - 1);
-		// books, bookNo + 1 < 원본
-		// books, bookNo < 복사하는 곳
-		books[--idx] = null;
-		System.out.println("책 번호가 " + (bookNo + 1) + "인 책을 삭제했습니다.");
+		System.out.println("책 번호가 " + bookNo + "인 책이 없습니다.");	
+		
 	}
 	
 	private void findBook() {
@@ -85,7 +89,7 @@ public class Library {
 	
 	public void manage() {	
 		while(true) {
-			System.out.print("1.추가 2. 삭제 3.조회 4.전체목록 0.프로그램종료 >>> ");
+			System.out.print("1.추가 2.삭제 3.조회 4.전체목록 0.프로그램종료 >>> ");
 			int choice = sc.nextInt();	// 숫자 정보 먹는 애
 			sc.nextLine();				// Enter key 먹는 애 - 입력받아서 저장안하고 버림. (불필요한 엔터 제거)
 			switch(choice) {
