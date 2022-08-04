@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="pratice02.VendingMachine"/>
-    <fullyQualifiedTypeName name="pratice.Pra08"/>
     <fullyQualifiedTypeName name="pratice.Watch"/>
     <fullyQualifiedTypeName name="pratice.Gun"/>
     <fullyQualifiedTypeName name="ex05_constructor.Person"/>
@@ -36,12 +34,9 @@
     <fullyQualifiedTypeName name="ex02_constructor.User"/>
     <fullyQualifiedTypeName name="ex01_setter.User"/>
     <fullyQualifiedTypeName name="ex03_singleton.User"/>
-    <fullyQualifiedTypeName name="lombok.Getter"/>
-    <fullyQualifiedTypeName name="lombok.Setter"/>
     <fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
     <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
     <fullyQualifiedTypeName name="lombok.Builder"/>
-    <fullyQualifiedTypeName name="lombok.ToString"/>
     <fullyQualifiedTypeName name="ex05_lombok.User"/>
     <fullyQualifiedTypeName name="quiz01_coffee.Espresso"/>
     <fullyQualifiedTypeName name="quiz01_coffee.Americano"/>
@@ -55,9 +50,14 @@
     <fullyQualifiedTypeName name="java.lang.InternalError"/>
     <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="quiz01_game.UpDownGame"/>
-    <fullyQualifiedTypeName name="java.lang.System"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="java.lang.ArithmeticException"/>
     <fullyQualifiedTypeName name="java.util.InputMismatchException"/>
     <fullyQualifiedTypeName name="java.lang.RuntimeException"/>
+    <fullyQualifiedTypeName name="lombok.Getter"/>
+    <fullyQualifiedTypeName name="lombok.Setter"/>
+    <fullyQualifiedTypeName name="lombok.ToString"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="parking.ParkingLot"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="java.util.Arrays"/>
 </qualifiedTypeNameHistroy>

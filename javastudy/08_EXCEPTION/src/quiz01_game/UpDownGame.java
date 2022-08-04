@@ -45,6 +45,7 @@ public class UpDownGame {
 	
 	// 실행
 	public void play() {
+		
 			while(true) {
 				int n = input();
 				
