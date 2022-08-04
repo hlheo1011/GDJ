@@ -1,21 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.sun.java.swing.action.NextAction"/>
-    <fullyQualifiedTypeName name="java.lang.System"/>
-    <fullyQualifiedTypeName name="sun.util.resources.cldr.CalendarData"/>
-    <fullyQualifiedTypeName name="java.util.Calendar"/>
-    <fullyQualifiedTypeName name="ex07_constructor.Computer"/>
-    <fullyQualifiedTypeName name="ex08_access_modifier.User"/>
-    <fullyQualifiedTypeName name="ex09_this.School"/>
-    <fullyQualifiedTypeName name="ex11_static.MyMath"/>
-    <fullyQualifiedTypeName name="ex02_is_a.Hybrid"/>
-    <fullyQualifiedTypeName name="ex04_has_a_inherit.Soldier"/>
-    <fullyQualifiedTypeName name="sun.java2d.loops.ScaledBlit"/>
     <fullyQualifiedTypeName name="pratice02.VendingMachine"/>
     <fullyQualifiedTypeName name="pratice.Pra08"/>
     <fullyQualifiedTypeName name="pratice.Watch"/>
     <fullyQualifiedTypeName name="pratice.Gun"/>
-    <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="ex05_constructor.Person"/>
     <fullyQualifiedTypeName name="ex05_constructor.Student"/>
     <fullyQualifiedTypeName name="ex06_constructor.Student"/>
@@ -44,7 +32,6 @@
     <fullyQualifiedTypeName name="ex16_interface.Person"/>
     <fullyQualifiedTypeName name="quiz07_song.Producer"/>
     <fullyQualifiedTypeName name="quiz07_song.Song"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="quiz08_schedule.WeekScheduler"/>
     <fullyQualifiedTypeName name="ex02_constructor.User"/>
     <fullyQualifiedTypeName name="ex01_setter.User"/>
@@ -60,4 +47,17 @@
     <fullyQualifiedTypeName name="quiz01_coffee.Americano"/>
     <fullyQualifiedTypeName name="quiz02_coffee.Espresso"/>
     <fullyQualifiedTypeName name="quiz03_bus.Person"/>
+    <fullyQualifiedTypeName name="java.lang.NullPointerException"/>
+    <fullyQualifiedTypeName name="java.lang.NumberFormatException"/>
+    <fullyQualifiedTypeName name="java.io.File"/>
+    <fullyQualifiedTypeName name="java.io.FileReader"/>
+    <fullyQualifiedTypeName name="java.net.Inet4Address"/>
+    <fullyQualifiedTypeName name="java.lang.InternalError"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="quiz01_game.UpDownGame"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="java.lang.ArithmeticException"/>
+    <fullyQualifiedTypeName name="java.util.InputMismatchException"/>
+    <fullyQualifiedTypeName name="java.lang.RuntimeException"/>
 </qualifiedTypeNameHistroy>
