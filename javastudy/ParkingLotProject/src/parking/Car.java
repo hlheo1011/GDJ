@@ -15,6 +15,9 @@ public class Car {
 	
 	// constructor
 	
+	public String setCarNo() {
+		return this.carNo.replaceAll("\\s", "");
+	}	
 	
 	
 
