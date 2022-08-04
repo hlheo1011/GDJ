@@ -24,7 +24,8 @@ public class Bus {
 		// 시트에 사람이 없으면, 시트번호에 Person 저장하기
 		Seat seat = seats[seatNo - 1];
 		Person p = seat.getPerson();
-		if(p == null){					// 자리가 비어있으면.. .. .. .. 			
+		if(p == null){
+			// 자리가 비어있으면.. .. .. .. 			
 				seat.setPerson(person);
 				// -1을 해준 이유는 seatNo가 1~25기 때문. 인덱스는 0~24이다.
 		}
