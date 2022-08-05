@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="ex08_override.Circle"/>
-    <fullyQualifiedTypeName name="ex08_override.Rectangle"/>
-    <fullyQualifiedTypeName name="ex08_override.Square"/>
     <fullyQualifiedTypeName name="ex08_override.Shape"/>
     <fullyQualifiedTypeName name="quiz03_bus.Bus"/>
     <fullyQualifiedTypeName name="quiz04_cart.Customer"/>
@@ -45,12 +42,10 @@
     <fullyQualifiedTypeName name="lombok.Setter"/>
     <fullyQualifiedTypeName name="lombok.ToString"/>
     <fullyQualifiedTypeName name="parking.ParkingLot"/>
-    <fullyQualifiedTypeName name="java.util.Arrays"/>
     <fullyQualifiedTypeName name="javax.management.RuntimeErrorException"/>
     <fullyQualifiedTypeName name="ex06_exception_class.MyException"/>
     <fullyQualifiedTypeName name="ex06_exception_class.ParkingLot"/>
     <fullyQualifiedTypeName name="quiz03_bank.BankException"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="quiz04_employee.Company"/>
     <fullyQualifiedTypeName name="java.util.InputMismatchException"/>
     <fullyQualifiedTypeName name="java.lang.Exception"/>
@@ -59,5 +54,10 @@
     <fullyQualifiedTypeName name="quiz04_employee.Temporary"/>
     <fullyQualifiedTypeName name="java.lang.RuntimeException"/>
     <fullyQualifiedTypeName name="quiz04_employee.EmployeeException"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="java.util.Map"/>
+    <fullyQualifiedTypeName name="prac2.SeatGroup"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="prac2.Hall"/>
 </qualifiedTypeNameHistroy>
