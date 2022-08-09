@@ -26,7 +26,6 @@
     <fullyQualifiedTypeName name="lombok.Setter"/>
     <fullyQualifiedTypeName name="lombok.ToString"/>
     <fullyQualifiedTypeName name="parking.ParkingLot"/>
-    <fullyQualifiedTypeName name="javax.management.RuntimeErrorException"/>
     <fullyQualifiedTypeName name="ex06_exception_class.MyException"/>
     <fullyQualifiedTypeName name="ex06_exception_class.ParkingLot"/>
     <fullyQualifiedTypeName name="quiz03_bank.BankException"/>
@@ -60,4 +59,5 @@
     <fullyQualifiedTypeName name="java.util.Collections"/>
     <fullyQualifiedTypeName name="prac3.Customer"/>
     <fullyQualifiedTypeName name="prac3.BreadAndChange"/>
+    <fullyQualifiedTypeName name="javax.management.RuntimeErrorException"/>
 </qualifiedTypeNameHistroy>

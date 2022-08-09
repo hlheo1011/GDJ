@@ -10,6 +10,7 @@ public class UserMain {
 		// int a = 10; // a는 변수 -- > 기능이 없음
 		// String s = "hi"; // s는 객체 -- > s.을 치면 기능을 찾을 수 있음
 		
+		
 		// 객체 선언
 		// User user = null;			// 동일패키지의 규칙 : 동일 패키지는 import 할 수 없다. 그냥 쓰면 됨.
 		
@@ -18,6 +19,7 @@ public class UserMain {
 		
 		// 객체 선언과 생성을 한 번에
 		User user = new User();
+
 		
 		// 모든 User 객체는 필드값을 가지고 있다.
 		// 마침표(.)를 이용해서 필드값을 호출한다.

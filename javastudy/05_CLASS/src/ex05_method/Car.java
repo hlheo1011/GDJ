@@ -20,7 +20,6 @@ public class Car {
 			oil = 60;
 		}
 	}
-	
 	// 만약에 oil이 60을 넘어간다면, 60이다.
 	
 	// 2. 달리기
@@ -36,9 +35,11 @@ public class Car {
 			oil--;
 			return;
 		}
+		
 		// 속도는 25씩 증가, 최대속도 120
 		// 기름은 1씩 사용
 		speed += 25;
+		
 		if(speed > 120) {
 			speed = 120;
 		}
