@@ -19,7 +19,7 @@ public class Main {
 		// 5. 리눅스의 경로 구분 방법 : 슬래시(/)
 		
 		// 폴더(디렉터리) 만들기
-		File dir = new File("CL\\storage");
+		File dir = new File("C:\\storage");
 		
 		// 존재하지 않으면 만들겠다.
 		if(dir.exists() == false) { // if(!dir.exists())
@@ -146,7 +146,7 @@ public class Main {
 	}
 	
 	public static void main(String[] args) {
-		q2();	
+		m1();	
 		
 		
 	}
