@@ -1,24 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="quiz07_song.Producer"/>
-    <fullyQualifiedTypeName name="quiz07_song.Song"/>
-    <fullyQualifiedTypeName name="quiz08_schedule.WeekScheduler"/>
-    <fullyQualifiedTypeName name="ex02_constructor.User"/>
-    <fullyQualifiedTypeName name="ex01_setter.User"/>
-    <fullyQualifiedTypeName name="ex03_singleton.User"/>
-    <fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
-    <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
-    <fullyQualifiedTypeName name="lombok.Builder"/>
-    <fullyQualifiedTypeName name="ex05_lombok.User"/>
-    <fullyQualifiedTypeName name="quiz01_coffee.Espresso"/>
-    <fullyQualifiedTypeName name="quiz01_coffee.Americano"/>
-    <fullyQualifiedTypeName name="quiz02_coffee.Espresso"/>
-    <fullyQualifiedTypeName name="quiz03_bus.Person"/>
-    <fullyQualifiedTypeName name="java.lang.NullPointerException"/>
-    <fullyQualifiedTypeName name="java.lang.NumberFormatException"/>
-    <fullyQualifiedTypeName name="java.io.File"/>
-    <fullyQualifiedTypeName name="java.io.FileReader"/>
-    <fullyQualifiedTypeName name="java.net.Inet4Address"/>
     <fullyQualifiedTypeName name="java.lang.InternalError"/>
     <fullyQualifiedTypeName name="quiz01_game.UpDownGame"/>
     <fullyQualifiedTypeName name="java.lang.ArithmeticException"/>
@@ -43,7 +24,6 @@
     <fullyQualifiedTypeName name="java.lang.RuntimeException"/>
     <fullyQualifiedTypeName name="java.util.Arrays"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
-    <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="com.sun.tools.classfile.CharacterRangeTable_attribute.Entry"/>
     <fullyQualifiedTypeName name="java.util.TreeMap"/>
     <fullyQualifiedTypeName name="java.util.NavigableMap"/>
@@ -51,8 +31,6 @@
     <fullyQualifiedTypeName name="java.util.Map.Entry"/>
     <fullyQualifiedTypeName name="java.util.Map"/>
     <fullyQualifiedTypeName name="java.util.HashMap"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="java.util.Iterator"/>
     <fullyQualifiedTypeName name="java.util.Set"/>
     <fullyQualifiedTypeName name="java.util.HashSet"/>
@@ -60,4 +38,26 @@
     <fullyQualifiedTypeName name="prac3.Customer"/>
     <fullyQualifiedTypeName name="prac3.BreadAndChange"/>
     <fullyQualifiedTypeName name="javax.management.RuntimeErrorException"/>
+    <fullyQualifiedTypeName name="java.text.DecimalFormat"/>
+    <fullyQualifiedTypeName name="java.lang.Object"/>
+    <fullyQualifiedTypeName name="java.io.FileNotFoundException"/>
+    <fullyQualifiedTypeName name="ex03_reader.Product"/>
+    <fullyQualifiedTypeName name="javax.xml.parsers.DocumentBuilderFactory"/>
+    <fullyQualifiedTypeName name="javax.xml.parsers.DocumentBuilder"/>
+    <fullyQualifiedTypeName name="org.w3c.dom.Document"/>
+    <fullyQualifiedTypeName name="org.w3c.dom.Element"/>
+    <fullyQualifiedTypeName name="org.w3c.dom.NodeList"/>
+    <fullyQualifiedTypeName name="org.w3c.dom.Node"/>
+    <fullyQualifiedTypeName name="org.json.JSONArray"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="org.json.JSONObject"/>
+    <fullyQualifiedTypeName name="java.io.File"/>
+    <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
+    <fullyQualifiedTypeName name="java.io.FileWriter"/>
+    <fullyQualifiedTypeName name="java.io.BufferedReader"/>
+    <fullyQualifiedTypeName name="java.io.FileReader"/>
+    <fullyQualifiedTypeName name="java.io.BufferedWriter"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="java.io.IOException"/>
 </qualifiedTypeNameHistroy>
