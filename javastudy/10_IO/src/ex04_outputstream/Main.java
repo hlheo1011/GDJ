@@ -117,7 +117,7 @@ public class Main {
 		// 객체를 그대로 출력하는 ObjectOutputStream
 		// 보조
 		
-		File file = new File("C:\\sorage", "b4.dat");
+		File file = new File("C:\\storage", "b4.dat");
 		FileOutputStream fos = null;
 		ObjectOutputStream oos = null;
 		
