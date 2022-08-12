@@ -73,7 +73,7 @@ public class Main {
 		}
 		
 		/* for문
-	 	for(int i = 0; i < list.size(); i++) {	 list.size();는 메소드를 4번이나 호출하는 거기 떄문에 성능 저하다.
+	 	for(int i = 0; i < list.size(); i++) {	 list.size();는 메소드를 4번이나 호출하는 거기 떄문에 성능 저하된다.
 			System.out.println(list.get(i));
 		 }
 		 */

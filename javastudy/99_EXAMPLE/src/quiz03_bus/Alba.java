@@ -6,6 +6,4 @@ public class Alba extends Person {
 		super(name);
 	}
 	
-	
-
 }
