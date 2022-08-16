@@ -28,7 +28,7 @@ public class ServerMain {
 			serverSocket = new ServerSocket();
 			
 			// InetSocketAddress 생성
-			InetSocketAddress address = new InetSocketAddress("localhost", 909);
+			InetSocketAddress address = new InetSocketAddress("localhost", 9090);	// http://localhost:9090
 			
 			// ServerSocket에 InetSocketAddress 연결
 			serverSocket.bind(address);

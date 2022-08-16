@@ -16,7 +16,7 @@ public class ClientMain {
 			clientSocket = new Socket();
 			
 			// 접속할 Server의 InetSocketAddress 생성
-			InetSocketAddress address = new InetSocketAddress("localhost", 909);
+			InetSocketAddress address = new InetSocketAddress("localhost", 9090);
 			
 			// 서버에 접속
 			clientSocket.connect(address);
