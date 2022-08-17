@@ -53,11 +53,9 @@ public class Main {
 			
 			String str = sb.toString();
 			System.out.println(str);
-			
-			
-			
+
 		} catch (IOException e) {
-			e.getStackTrace();
+			e.printStackTrace();
 		} finally {
 			try {
 				if(fr != null) {
@@ -234,7 +232,7 @@ public class Main {
 	}
 	
 	public static void main(String[] args) {
-		m3();
+		m1();
 		
 		
 		

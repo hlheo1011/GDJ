@@ -115,7 +115,7 @@ public class Main {
 		if(list.contains(4)) {
 			System.out.println("4를 포함한다.");
 		} else {
-			System.out.println();
+			System.out.println("4를 포함하지 않는다.");
 		}
 
 	}
