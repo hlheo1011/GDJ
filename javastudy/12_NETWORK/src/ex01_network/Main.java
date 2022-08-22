@@ -60,6 +60,7 @@ public class Main {
 			
 			HttpURLConnection con = (HttpURLConnection)url.openConnection();
 			
+			
 			// HTTP 응답 코드
 			// 1. 200 : 정상
 			// 2. 40X : 요청이 잘못됨(사용자 잘못)
@@ -154,7 +155,7 @@ public class Main {
 	
 	
 	public static void main(String[] args) {
-		m2();
+		m4();
 	}
 
 }

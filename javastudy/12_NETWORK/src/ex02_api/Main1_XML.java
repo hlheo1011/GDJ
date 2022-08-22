@@ -21,7 +21,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 
-public class Main {
+public class Main1_XML {
 	
 	// 요청
 	// 1. Request
@@ -133,15 +133,18 @@ public class Main {
 			for(int i = 0; i < nodeList.getLength(); i++) {
 				Node node = nodeList.item(i);			// <header>와 <body>
 				System.out.println("  " + node.getNodeName());
+				
 				NodeList nodeList2 = node.getChildNodes();		// <header>의 자식 태그(<resultCode>, <resultMsg>), <body>의 자식 태그(<items>, <numOfRows>, <pageNo>, <totalCount>)
 				for(int j = 0; j < nodeList2.getLength(); j++) {
 					Node node2 = nodeList2.item(j);
 					System.out.println("    " + node2.getNodeName());
+					
 					if(node2.getNodeName().equals("items")) {	// <items> 태그 대상
 						NodeList items = node2.getChildNodes();	// <items>의 자식 태그(<item>)
 						for(int k = 0; k < items.getLength(); k++) {
 							Node item = items.item(k);
 							System.out.println("      " + item.getNodeName());
+							
 							NodeList itemChildren = item.getChildNodes();	// <item>의 자식 태그
 							for(int l = 0; l < itemChildren.getLength(); l++) {
 								Node itemChild = itemChildren.item(l);
