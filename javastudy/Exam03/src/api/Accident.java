@@ -32,6 +32,13 @@ public class Accident {
 		this.injpsnCnt = injpsnCnt;
 	}
 	
+	@Override
+	public String toString() {
+		return "Accident [occrrncDt=" + occrrncDt + ", occrrncDayCd=" + occrrncDayCd + ", dthDnvCnt=" + dthDnvCnt
+				+ ", injpsnCnt=" + injpsnCnt + "]";
+	}
+	
+
 
 
 

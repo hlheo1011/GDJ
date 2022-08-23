@@ -17,78 +17,42 @@ import java.util.List;
 public class ApiMain {
 
 	public static void main(String[] args) {
-		
-
-		String serviceKey = "QcU2VuPP/9FzvgkNvkxpRFvzzIly2xSCTkvnE9X5mBOFZf2QyvN0DwfHh+B0ZgOmffGc5dVSJDjaBCKqtB0r1Q==";
-		
+	
+		StringBuilder urlBuilder = new StringBuilder();
 		try {
-			serviceKey = URLEncoder.encode(serviceKey, "UTF-8");
-			
+			String serviceKey = "QcU2VuPP/9FzvgkNvkxpRFvzzIly2xSCTkvnE9X5mBOFZf2QyvN0DwfHh+B0ZgOmffGc5dVSJDjaBCKqtB0r1Q==";
+			urlBuilder.append("http://apis.data.go.kr/B552061/AccidentDeath/getRestTrafficAccidentDeath");
+			urlBuilder.append("?serviceKey=").append(URLEncoder.encode(serviceKey), "UTF-8"));
+			urlBuilder.append("&searchYear=2021");
+			urlBuilder.append("&siDo=1100");
+			urlBuilder.append("&guGun=1125");
+			urlBuilder.append("&type=json");
+			urlBuilder.append("&numOfRows=10");
+			urlBuilder.append("&pageNo=1");
 		} catch(UnsupportedEncodingException e) {
-			throw new RuntimeException("인코딩 실패", e);
+			e.printStackTrace();
 		}
 		
-		String apiURL = "http://apis.data.go.kr/B552061/AccidentDeath";
-		String response = getResponse(apiURL);
-		createFile(response);
-			
-	}
-	
-	public static String getResponse(String apiURL) {
-		
-		HttpURLConnection con = getConnection(apiURL);		
+		HttpURLConnection con = null;
 		try {
-			if(con.getResponseCode() == HttpURLConnection.HTTP_OK) {
-				return readBody(con.getInputStream());
-			} else {
-				return readBody(con.getErrorStream());
-			} 
-		} catch(IOException e) {
-			throw new RuntimeException("API 요청 오류", e);
-		}
-	}
-	
-	
-	public static HttpURLConnection getConnection(String apiURL) {
-		try {
-			URL url = new URL(apiURL);
-			return(HttpURLConnection)url.openConnection();
+			URL url = new URL(urlBuilder.toString());
+			con = (HttpURLConnection) url.openConnection();
+			con.setRequestMethod("GET");
+			con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");			
 		} catch(MalformedURLException e) {
-			throw new RuntimeException("API 주소 오류", e);
+			e.printStackTrace();
 		} catch(IOException e) {
-			throw new RuntimeException("API 연결 오류", e);
+			e.printStackTrace();
 		}
-	}
-	
-	public static String readBody(InputStream in) {
-		try(BufferedReader br = new BufferedReader(new InputStreamReader(in))) {
-			StringBuilder sb = new StringBuilder();
-			String line = null;
-			while((line = br.readLine()) != null) {
-				sb.append(line);
+		
+		StringBuilder sb = new StringBuilder();
+		try {
+			BufferedReader reader = null;
+			if(con.getResponseCode() == HttpURLConnection.HTTP_OK) {
+				
 			}
-			return sb.toString();
-		} catch(IOException e) {
-			throw new RuntimeException("API 응답 오류", e);
-		}
-	}
-
-	
-	public static void createFile(String response) {
-		try(BufferedWriter bw = new BufferedWriter(new FileWriter("C:\\storage\\accident.txt"))) {
-			List<String> list = new ArrayList<>();
-			Accident accident = new Accident();
-			list.add(response);
-			bw.write(response);
-			bw.flush();
-			System.out.println(response);
-			
-		} catch(IOException e) {
-			throw new RuntimeException("파일 생성 오류", e);
 		}
 
 	}
-	
-	
 	
 }
