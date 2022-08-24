@@ -53,6 +53,14 @@ public class Main {
 			JSONObject obj = XML.toJSONObject(sb.toString());
 			JSONObject rss = obj.getJSONObject("rss");
 			JSONObject channel = rss.getJSONObject("channel");
+			
+			// 위에 세줄과 같은 코드
+			// JSONObject channel = XML.toJSONObject(sb.toString())
+			//						.getJSONObject("rss")
+			//						.getJSONObject("channel");
+			//						.getJSONObject("item"); // 여기서부턴 아이템.
+			
+			
 			String link = channel.getString("link");
 			String description = channel.getString("description");
 			String generator = channel.getString("generator");

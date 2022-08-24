@@ -56,8 +56,8 @@
     <fullyQualifiedTypeName name="java.io.FileWriter"/>
     <fullyQualifiedTypeName name="java.io.BufferedReader"/>
     <fullyQualifiedTypeName name="java.io.InputStreamReader"/>
-    <fullyQualifiedTypeName name="org.json.JSONObject"/>
     <fullyQualifiedTypeName name="org.json.XML"/>
     <fullyQualifiedTypeName name="java.io.File"/>
     <fullyQualifiedTypeName name="org.json.JSONArray"/>
+    <fullyQualifiedTypeName name="org.json.JSONObject"/>
 </qualifiedTypeNameHistroy>
