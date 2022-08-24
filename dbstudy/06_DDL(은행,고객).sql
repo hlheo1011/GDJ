@@ -26,23 +26,8 @@ ALTER TABLE CUSTOMER ADD CONSTRAINT PK_CUSTOMER PRIMARY KEY(NO);
 ALTER TABLE CUSTOMER
     ADD CONSTRAINT FK_CUSTOMER_BANK FOREIGN KEY(BANK_CODE)
         REFERENCES BANK(BANK_CODE)
-            ON DELETE CASCADE;
+            ON DELETE cascade;
         
 -- 테이블 변경하기(ALTER TABLE)
 
 -- 1. BANK 테이블에 BANK_PHONE 칼럼을 추가하시오.
-
-
--- 2. CUSTOMER 테이블에 GRADE 칼럼을 추가하시오. ('VIP', 'GOLD', 'SILVER' 중 하나의 값만 가진다.)
-
-
--- 3. BANK 테이블의 BANK_NAME 칼럼을 VARCHAR2(15 BYTE)로 수정하시오.
-
-
--- 4. BANK 테이블의 BANK_NAME 칼럼을 NOT NULL로 수정하시오.
-
-
--- 5. CUSTOMER 테이블의 AGE 칼럼을 삭제하시오.
-
-
--- 6. CUSTOMER 테이블의 NO 칼럼과 NAME 칼럼이름을 CUST_NO와 CUST_NAME으로 변경하시오.
