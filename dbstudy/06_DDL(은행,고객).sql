@@ -30,4 +30,61 @@ ALTER TABLE CUSTOMER
         
 -- 테이블 변경하기(ALTER TABLE)
 
+-- 1. 칼럼 추가 : ALTER TABLE 테이블 ADD 칼럼명 데이터타입 [제약조건]
+-- 2. 칼럼 수정 : ALTER TABLE 테이블 MODIFY 칼럼명 데이터타입 [제약조건]
+-- 3. 칼럼 삭제 : ALTER TABLE 테이블 DROP COLUMN
+-- 4. 칼럼 이름 수정 : ALTER TABLE 테이블 RENAME COLUMN OLD이름 TO NEW이름
+
 -- 1. BANK 테이블에 BANK_PHONE 칼럼을 추가하시오.
+ALTER TABLE BANK
+    ADD BANK_PHONE VARCHAR2(20 BYTE) NULL;
+
+-- 2. CUSTOMER 테이블에 GRADE 칼럼을 추가하시오. ('VIP', 'GOLD', 'SILVER' 중 하나의 값만 가진다.)
+ALTER TABLE CUSTOMER
+    ADD GRADE VARCHAR2(6 BYTE) CHECK(GRADE IN('VIP', 'GOLD', 'SILVER'));
+
+-- 3. BANK 테이블의 BANK_NAME 칼럼을 VARCHAR2(15 BYTE)로 수정하시오.
+ALTER TABLE BANK
+    MODIFY BANK_NAME VARCHAR2(15 BYTE);
+    -- NULL 유무를 적어주지 않으면, 본래 가지고 있던 NULL 유무 값을 상속받아 사용한다.
+
+-- 4. BANK 테이블의 BANK_NAME 칼럼을 NULL로 수정하시오.
+ALTER TABLE BANK
+    MODIFY BANK_NAME VARCHAR2(15 BYTE) NULL;
+
+-- 5. CUSTOMER 테이블의 AGE 칼럼을 삭제하시오.
+ALTER TABLE CUSTOMER
+    DROP COLUMN AGE;
+
+-- 6. CUSTOMER 테이블의 NO 칼럼과 NAME 칼럼이름을 CUST_NO와 CUST_NAME으로 수정하시오.
+ALTER TABLE CUSTOMER
+    RENAME COLUMN NO TO CUST_NO;
+ALTER TABLE CUSTOMER
+    RENAME COLUMN NAME TO CUST_NAME;
+
+
+
+-- 7. BANK 테이블의 이름을 BANK_TBL로 수정하시오.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
