@@ -1,20 +1,23 @@
+-- 테이블 삭제
 DROP TABLE EMPLOYEE;
 DROP TABLE DEPARTMENT;
 
+-- DEPARTMENT 테이블 생성
 CREATE TABLE DEPARTMENT(
     DEPT_NO   NUMBER            NOT NULL,
     DEPT_NAME VARCHAR2(15 BYTE) NOT NULL,
     LOCATION  VARCHAR2(15 BYTE) NOT NULL
 );
 
+-- EMPLOYEE 테이블 생성
 CREATE TABLE EMPLOYEE(
     EMP_NO    NUMBER            NOT NULL,
     NAME      VARCHAR2(20 BYTE) NOT NULL,
-    DEPT_NO   NUMBER,
-    POSITION  VARCHAR2(20 BYTE),
-    GENDER    CHAR(2),
-    HIRE_DATE DATE,
-    SALARY    NUMBER
+    DEPART    NUMBER            NULL,
+    POSITION  VARCHAR2(20 BYTE) NULL,
+    GENDER    CHAR(2)           NULL,
+    HIRE_DATE DATE              NULL, 
+    SALARY    NUMBER            NULL
 );
 
 -- 기본키 추가
@@ -26,20 +29,6 @@ ALTER TABLE EMPLOYEE ADD CONSTRAINT FK_EMPLOYEE_DEPARTMENT FOREIGN KEY(DEPT_NO)
     REFERENCES DEPARTMENT(DEPT_NO)
         ON DELETE SET NULL;
         
-/*
-    DML
-    1. Data Mainpulation Language
-    2. 데이터 조작어
-    3. 행(Row, Record, Tuple) 단위 삽입
-    4. 트랜잭션 (작업) 완료를 위해 COMMIT이 필요
-    5. 트랜잭션 (작업) 취소를 위해 ROLLBACK 사용 가능
-    6. 종류
-        1) INSERT INTO VALUES
-        2) UPDATE SET WHERE
-        3) DELETE FROM WHERE
-*/
-/***********************************************************************/
-
 /* 시퀀스
 
     1. SEQUENCE (번호표?)
@@ -73,7 +62,6 @@ CREATE SEQUENCE DEPARTMENT_SEQ
     NOCYCLE;
 
 -- 부서 테이블에 행(Row) 삽입
--- 부모 테이블(관계에서 PK를 가진 테이블)에 먼저 삽입을 해야 함
 INSERT INTO DEPARTMENT
     (DEPT_NO, DEPT_NAME, LOCATION)
 VALUES
@@ -94,17 +82,12 @@ VALUES
 -- 작업의 완료
 COMMIT;
 
-
--- 사원 테이블에 행(Row) 삽입
--- 자식 테이블(관계에서 FK를 가진 테이블)은 참조 무결성에 위배되지 않는 데이터만
--- 부서(부서번호) - 사원(소속부서)
--- PK            - FK
--- 1,2,3,4       - 1,2,3,4중 하나만 가능
-DROP SEQUENCE EMPLOYEE_SEQ;
+-- 사원 테이블에서 사용할 사원_시퀀스
 CREATE SEQUENCE EMPLOYEE_SEQ
     START WITH 1001
     NOCACHE;
-
+    
+-- 사원 테이블에 행(Row) 삽입
 INSERT INTO
     EMPLOYEE
 VALUES
@@ -123,10 +106,12 @@ VALUES
     (EMPLOYEE_SEQ.NEXTVAL, '한성일', 2, '과장', 'M', '93-04-01', 5000000);
     
 -- 오류가 발생하는 INSERT
+-- INSERT는 실패하였으나 시퀀스의 번호는 사용했음
 INSERT INTO
     EMPLOYEE
 VALUES
     (EMPLOYEE_SEQ.NEXTVAL, '신현준', 5, '대리', 'M', '95-12-01', 350000);
+    
  -- 정상 데이터 다시 INSERT (오류가 발생하는 INSERT에서는 시퀀스는 사용되지만 오류가 사용한다.)
  -- 따라서 아래 코드를 실행하면 1005번이 아닌 1006번이 된다.
 INSERT INTO
@@ -134,4 +119,24 @@ INSERT INTO
 VALUES
     (EMPLOYEE_SEQ.NEXTVAL, '신현준', 3, '대리', 'M', '95-12-01', 350000); 
     
+COMMIT;
+
+
+/********************************/
+
+DROP TABLE SAMPLE;
+CREATE TABLE SAMPLE(
+    NO1 NUMBER,
+    NO2 NUMBER
+);
+
+DROP SEQUENCE SAMPLE_SEQ;
+CREATE SEQUENCE SAMPLE_SEQ NOCACHE;
+
+-- 최초 1번은 NEXTVAL를 사용해야 CURRVAL도 사용 가능함
+INSERT INTO SAMPLE(NO1) VALUES(SAMPLE_SEQ.CURRVAL);
+
+-- NEXTVAL, CURRVAL 함께 사용
+INSERT INTO SAMPLE(NO1, NO2) VALUES(SAMPLE_SEQ.NEXTVAL, SAMPLE_SEQ.CURRVAL);
+
 COMMIT;
