@@ -172,21 +172,3 @@ SELECT EMP_NO, NAME, DEPT_NO, POSITION, GENDER, HIRE_DATE, SALARY AS S
  WHERE S >= 5000000
  ORDER BY HIRE_DATE;
   
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-
-    
