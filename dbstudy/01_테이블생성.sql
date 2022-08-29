@@ -95,4 +95,6 @@ CREATE TABLE USER_TBL(
 );    
     
     
-    
+SELECT *
+  FROM V$LOGFILE
+ ORDER BY 1;
