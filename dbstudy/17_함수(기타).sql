@@ -69,44 +69,56 @@ SELECT
   FROM
        EMPLOYEES;
 
+-- PHONE_NUMBER REGION
+-- 011          MOBILE
+-- 515          EAST
+-- 590          WEST
+-- 603          SOUTH
+-- 650          NORTH
+SELECT
+       EMPLOYEE_ID
+     , PHONE_NUMBER
+     , DECODE(SUBSTR(PHONE_NUMBER, 1, 3) -- 1, 3 = 첫번째 글자부터 3글자만 가지고 와서,
+       , '011', 'MOBILE'            -- 011 이면 (SUBSTR이기 떄문에 '' 로 묶어줌)
+       , '515', 'EAST'
+       , '590', 'WEST'
+       , '603', 'SOUTH'
+       , '650', 'NORTH') AS REGION
+  FROM 
+       EMPLOYEES;
+  
+-- 4. 분기 표현식(IF 느낌)
+-- CASE
+--      WHEN 조건식1 THEN 결과값1
+--      WHEN 조건식2 THEN 결과값2
+--      ...
+--      ELSE 결과값N
+-- END
 
+-- SALARY < 10000 : C
+-- SALARY < 20000 : B
+-- SALARY >= 20000 : A
 
+SELECT
+       EMPLOYEE_ID
+     , SALARY
+     , CASE
+            WHEN SALARY < 10000 THEN 'C'
+            WHEN SALARY < 20000 THEN 'B'
+            ELSE 'A'
+        END AS 구분
+  FROM
+       EMPLOYEES;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-- EMPLOTEE_ID, HRIR_DATE(YYYY-MM-DD), 근무개월개수, 퇴직금정산대상유무 조회하기
+-- 퇴직금정산대상 : 근무개월수가 240개월 이상이면 '정산대상', 아니면 빈 문자열
+SELECT
+       EMPLOYEE_ID AS 사원번호
+     , TO_CHAR(HIRE_DATE, 'YYYY-MM-DD') AS 입사일
+     , FLOOR(MONTHS_BETWEEN(SYSDATE, HIRE_DATE)) AS 근무개월수
+     , CASE 
+            WHEN MONTHS_BETWEEN(SYSDATE, HIRE_DATE)  >= 240 THEN '정산대상'
+            ELSE ''
+       END AS 퇴직금정산대상유무
+  FROM
+       EMPLOYEES;
