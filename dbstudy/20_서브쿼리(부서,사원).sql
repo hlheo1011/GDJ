@@ -220,16 +220,9 @@ SELECT
   FROM 
        DUAL;
        
+
 -- 2. 부서번호가 1인 부서와 같은 지역에서 근무하는 사원 조회하기
 --    사원번호(EMP_NO), 사원명(NAME), 부서번호(DEPART), 부서명(DEPT_NAME) 조회
--- 단일 행
-SELECT E.EMP_NO, E.NAME, E.DEPART, D.DEPT_NAME
-  FROM DEPARTMENT D INNER JOIN EMPLOYEE E
-    ON D.DEPT_NO = E. DEPART
- WHERE D.LOCATION = (SELECT LOCATION
-                       FROM DEPARTMENT
-                      WHERE DEPT_NO = 1);
-
 
 -- 스칼라 서브쿼리 접근
 
@@ -247,8 +240,8 @@ SELECT
   FROM
        EMPLOYEE E;
        
-       
 -- 조인 접근
+
 SELECT E.EMP_NO, E.NAME, E.DEPART, D.DEPT_NAME
   FROM DEPARTMENT D RIGHT OUTER JOIN EMPLOYEE E
     ON D.DEPT_NO = E.DEPART
