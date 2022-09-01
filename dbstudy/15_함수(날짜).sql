@@ -12,7 +12,7 @@ SELECT
   FROM
        DUAL;
        
--- 3. 단위(년,월,일,시,분,초)( 추출 함수
+-- 3. 단위(년,월,일,시,분,초)추출 함수
 --    EXTRACT(단위 FROM 날짜)
 SELECT
        EXTRACT(YEAR   FROM SYSDATE) AS 년도
@@ -69,3 +69,5 @@ SELECT
        MONTHS_BETWEEN(SYSDATE, HIRE_DATE)
   FROM
        EMPLOYEE;
+       
+       
