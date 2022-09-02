@@ -4,13 +4,21 @@
 --    1) UPPER(칼럼)   : 칼럼의 데이터를 모두 대문자로 변환
 --    2) LOWER(칼럼)   : 칼럼의 데이터를 모두 소문자로 변환
 --    3) INITCAP(칼럼) : INITAL CAPITAL, 첫 글자는 대문자 나머지는 소문자로 변환
+DROP TABLE HYO;
+CREATE TABLE HYO(
+    EMAIL VARCHAR2(20 BYTE) NOT NULL
+);
+
+INSERT INTO HYO (EMAIL) VALUES ('hoh1011@naver.com');
+    
+
 SELECT
        EMAIL
      , UPPER(EMAIL)
      , LOWER(EMAIL)
      , INITCAP(EMAIL)
   FROM
-       EMPLOYEES;
+       HYO;
        
 -- FIRST_NAME 칼럼에서 'JAMES' 조회하기
 SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME
@@ -43,19 +51,28 @@ SELECT
 --    SUBSTR(칼럼, BEGIN, LENGTH)
 --    칼럼 데이터에의 BEGIN 위치부터 LENGTH개만큼 반환
 --    BEGIN은 인덱스가 아님(BEGIN은 1부터 시작함)
+DROP TABLE SAMPLE9;
+CREATE TABLE SAMPLE9(
+    NAME VARCHAR2(20 BYTE) NOT NULL,
+    EMAIL VARCHAR2(20 BYTE) NULL
+);
+
+INSERT INTO SAMPLE9 (NAME, EMAIL) VALUES ('Chunsik', 'Chunsik@naver.com');
+
+    
 SELECT
-       SUBSTR(FIRST_NAME, 1, 3) -- 1번째 글자부터 3글자를 가져옴
+       SUBSTR(NAME, 1, 3) -- 1번째 글자부터 3글자를 가져옴
   FROM
-       EMPLOYEES;
+       SAMPLE9;
        
 -- 5. 특정 문자열의 위치 반환
 --    INSTR(칼럼, 찾을 문자열)
 --    반환되는 위치는 인덱스가 아님(1부터 시작함)
 --    찾는 문자열이 없으면 0을 반환
 SELECT
-       INSTR(EMAIL, 'A') -- 'A'의 위치를 반환
+       INSTR(EMAIL, 'a') -- 'A'의 위치를 반환
   FROM
-       EMPLOYEES;
+       SAMPLE9;
        
 -- 6. 문자열 채우기(PADDING)
 --    1) LPAD(칼럼, 전체폭, 채울문자)
