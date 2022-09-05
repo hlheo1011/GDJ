@@ -56,7 +56,7 @@ SELECT
 --    표현식의 결과가 값1이면 결과1 반환, 값2이면 결과2 반환, ...
 --    표현식의 결과와 값의 비교는 동등비교(=)만 가능함
 
--- JOIN 없이 EMPLOYEES 테이블만 이용하여 EMPLOYEE_ID
+-- JOIN 없이 EMPLOYEES 테이블만 이용하여 EMPLOYEE_ID, DEPARTMENT_NAME 조회하기
 SELECT
        EMPLOYEE_ID
      , DECODE(DEPARTMENT_ID
