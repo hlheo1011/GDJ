@@ -59,4 +59,10 @@ public class Board {
 		this.create_date = create_date;
 	}
 	
+	@Override
+	public String toString() {
+		return "Board [board_no=" + board_no + ", title=" + title + ", content=" + content + ", hit=" + hit
+				+ ", create_date=" + create_date + "]";
+	}
+	
 }

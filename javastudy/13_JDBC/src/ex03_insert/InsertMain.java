@@ -31,7 +31,12 @@ public class InsertMain {
 		PreparedStatement ps = null;
 		try {
 			
+			// OracleDriver 클래스 로드
+			// OracleDriver 클래스가 저장된 ojdbc6.jar 파일을
+			//
+			
 			Class.forName("oracle.jdbc.OracleDriver");
+			// Oracle.jdbc. << 패키지 에 저장된 OracleDriver 클래스다.
 			String url = "jdbc:oracle:thin:@localhost:1521:xe";
 			String user = "SCOTT";
 			String password = "TIGER";
@@ -40,6 +45,9 @@ public class InsertMain {
 			// ? 은 변수
 			String sql = "INSERT INTO BOARD(BOARD_NO, TITLE, CONTENT, HIT, CREATE_DATE) VALUES(BOARD_SEQ.NEXTVAL, ?, ?, 0, SYSDATE)";
 			
+			// PreparedStatement 객체 생성
+			// Statement도 있는데 안쓰고 Prepared를 쓰는 이유는, 보안때문이다.
+			// sql inject 대비를 안해놓은 사이트 
 			ps = con.prepareStatement(sql);
 			
 			// 쿼리문에 포함된 ?에 변수 전달하기
@@ -71,6 +79,8 @@ public class InsertMain {
 				e.printStackTrace();
 			}
 		}
+		
+		sc.close();
 
 	}
 

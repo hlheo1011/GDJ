@@ -5,8 +5,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.util.Scanner;
 
-import domain.Board;
-
 public class DeleteMain {
 
 	public static void main(String[] args) {
@@ -62,6 +60,7 @@ public class DeleteMain {
 			board.setContent(content);
 			*/
 			
+			sc.close();
 			
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -73,6 +72,8 @@ public class DeleteMain {
 				e.printStackTrace();
 			}
 		}
+		
+	
 
 	}
 
