@@ -7,6 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Properties;
 
+import domain.ContactDTO;
+
 public class ContactDAO {
 	
 	// DAO : Database Access Object, 데이터베이스 접근 객체,
@@ -39,9 +41,11 @@ public class ContactDAO {
 	/************** Field **************/
 	
 	// 데이터베이스에 접근할 때 사용하는 공통 요소
-	private Connection con;
-	private PreparedStatement ps;
-	private ResultSet rs;
+	private Connection con;		  // DB접속
+	private PreparedStatement ps; //쿼리문 실행
+	private ResultSet rs;		  // SELECT 결과
+	private String sql;			  // 쿼리문
+	private int result;			  // INSERT, UPDATE, DELETE 결과
 	
 	/************** Method **************/
 	
@@ -76,6 +80,46 @@ public class ContactDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	// 연락처 추가 메소드
+	// 1. 매개변수 : ContactDTO
+	// 2. 반환값   : 0 또는 1
+	public int insertContact(ContactDTO contact) {	// 5. 마지막 도착지
+		
+		try {
+			con = getConnection();
+			sql = "INSERT INTO CONTACT VALUES(CONTACT_SEQ.NEXTVAL, ?, ?, ?, SYSDATE)";
+			ps = con.prepareStatement(sql);		// 6. 여기서 DB에 넣어주는 작업 실행
+			ps.setString(1, contact.getName());	 // 1번째 ?(변수)에 값 넣기
+			ps.setString(2, contact.getTel());   // 2번째 ?(변수)에 값 넣기
+			ps.setString(3, contact.getEmail()); // 3번째 ?(변수)에 값 넣기
+			result = ps.executeUpdate();
+				
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();			
+		}
+		
+		return result;
+		
+	}
+	
+	
+	// 연락처 수정 메소드
+	
+	
+	// 연락처 삭제 메소드
+	
+	
+	// 연락처 조회 메소드
+	
+	
+	// 연락처 목록 메소드
+	
+	
+	
+	
 	
 	public static void main(String[] args) {
 		
