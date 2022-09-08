@@ -35,6 +35,12 @@ public class ContactController {
 	}
 	
 	public void play() {
+		int contact_no;
+		String name;
+		String tel;
+		String email;
+		ContactDTO contact;
+		
 		while(true) {
 			menu();
 			System.out.print("선택(1~5,0) >>> ");
@@ -43,25 +49,56 @@ public class ContactController {
 			switch(choice) {
 			case 1: 
 				System.out.print("신규 연락처 이름 >>> ");
-				String name = sc.next();
+				name = sc.next();
 				System.out.print("신규 연락처 전화번호 >>> ");
-				String tel = sc.next();
+				tel = sc.next();
 				System.out.print("신규 연락처 이메일 >>> ");
-				String email = sc.next();
-				ContactDTO contact = new ContactDTO();	// 위에서 추가할 거를 하나로 모아줌
+				email = sc.next();
+				contact = new ContactDTO();	// 위에서 추가할 거를 하나로 모아줌
 				contact.setName(name);
 				contact.setTel(tel);
 				contact.setEmail(email);
-				contactService.addContact(contact);	// 하나로 모아준걸 contact 1. 출발 > ContactServiceImpl의 2. addContact로 도착
-				
-				
+				contactService.addContact(contact);	// 하나로 모아준걸 contact 1. 출발 > ContactServiceImpl의 2. addContact로 도착					
 				break;
-			case 2: break;
-			case 3: break;
-			case 4: break;
-			case 5: break;
-			case 0: return;
-			default: System.out.println("다시 선택 하세요.");
+				
+			case 2: 
+				System.out.print("수정할 연락처 번호 >>> ");
+				contact_no = sc.nextInt();
+				System.out.print("수정할 연락처 이름 >>> ");
+				name = sc.next();
+				System.out.print("수정할 연락처 전화번호 >>> ");
+				tel = sc.next();
+				System.out.print("수정할 연락처 이메일 >>> ");
+				email = sc.next();
+				contact = new ContactDTO();
+				contact.setContact_no(contact_no);
+				contact.setName(name);
+				contact.setTel(tel);
+				contact.setEmail(email);
+				contactService.modifyContact(contact);
+				break;
+			
+			case 3:
+				System.out.print("삭제할 연락처 번호 >>> ");
+				contact_no = sc.nextInt();
+				contactService.deleteContact(contact_no);
+				break;
+			
+			case 4: 
+				System.out.print("조회할 연락처 번호 >>> ");
+				contact_no = sc.nextInt();
+				contactService.findContactByNo(contact_no);
+				break;
+				
+			case 5: 
+				contactService.findAllcontacts();
+				break;
+				
+			case 0: 
+				System.out.println("연락처 프로그램을 종료합니다.");
+				return;
+				
+			default: System.out.println("다시 선택 하세요!");
 			}
 		}
 	}

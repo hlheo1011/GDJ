@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 public class ContactDTO {
 	
 //  Data Transfer Object, 데이터 전송 객체, DB로 전송할 데이터는 하나로 모아서 처리, 클래스를 이용해 객체로 만들어서 전달하는 형태	
-	private int contct_no;
+	private int contact_no;
 	private String name;
 	private String tel;
 	private String email;
