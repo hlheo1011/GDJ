@@ -30,6 +30,7 @@ public class ContactController {
 		System.out.println("3.연락처삭제");
 		System.out.println("4.연락처조회");
 		System.out.println("5.전체연락처");
+		System.out.println("6.연락처.csv만들기");
 		System.out.println("0.종료");
 		
 	}
@@ -92,6 +93,10 @@ public class ContactController {
 				
 			case 5: 
 				contactService.findAllcontacts();
+				break;
+				
+			case 6:
+				contactService.createContactFile();
 				break;
 				
 			case 0: 

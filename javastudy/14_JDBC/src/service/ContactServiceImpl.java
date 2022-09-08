@@ -1,5 +1,10 @@
 package service;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import domain.ContactDTO;
@@ -74,6 +79,42 @@ public class ContactServiceImpl implements ContactService {
 			}
 		}
 
+	}
+	
+	@Override
+	public void createContactFile() {
+		
+		// 전체 연락처 목록을 가져온다.
+		List<ContactDTO> contacts = dao.selectAllcontacts();
+		
+		// File 객체를 만든다.
+		// 경로를 작성하지 않으면 프로젝트 디렉터리에 파일이 생성된다.
+		File file = new File("연락처.csv");
+		
+		// BufferedWriter 스트림을 만든다.
+		// IOException 예외처리가 필요하다.
+		// close가 필요 없는 try-catch-resources문을 이용한다.
+		try(BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
+			
+			// 제목을 작성하고 줄 바꿈 처리한다.
+			bw.write("번호,이름,전화,이메일,등록일");
+			bw.newLine();  // bw.write("\n")과 동일
+			
+			// 연락처 내용을 한 줄씩 작성한다.
+			for(ContactDTO contact : contacts) {
+				bw.write(contact.getContact_no() + ",");
+				bw.write(contact.getName() + ",");
+				bw.write(contact.getTel() + ",");
+				bw.write(contact.getEmail() + ",");
+				bw.write(new SimpleDateFormat("yy/MM/dd").format(contact.getReg_date()) + "\n");
+			}
+			
+			System.out.println("연락처.csv 파일이 생성되었습니다.");
+			
+		} catch(IOException e) {
+			System.out.println("연락처.csv 파일 생성이 실패했습니다.");
+			e.printStackTrace();
+		}
 	}
 
 }
