@@ -7,25 +7,138 @@
     <title>pratice</title>
 </head>
 <body>
-    <a href="https://www.naver.com">
-        <img src="../../images/naver.png" width="200px">
-    </a>
-<form>
-    <label for="id"><strong>아이디</strong></label><br>
-    <input type="text" id="id" required><br>
 
-    <label for="password"><strong>비밀번호</strong></label><br>
-    <input type="text" id="password" required><br>
-    <label for="password"><strong>비밀번호 재확인</strong></label><br>
-    <input type="text" id="password" required><br>
-    
-    <label for="name"><strong>이름</strong></label><br>
-    <input type="text" id="name" maxlength="6" required><br>
+    <!-- 1번 -->
+    <h3>연습문제-1</h1>
+    <form action="01_overview.html" method="post">
+        <input type="text" name="id" placeholder="example@naver.com">
+        <input type="password" name="password" placeholder="비밀번호">
+        <button>로그인</button>
+    </form>
 
-    <button>가입하기</button>
+    <!-- 2번 -->
+    <h3>연습문제-2</h3>
+    <form action="01_overview.html" method="post">
+        <table>
+            <tbody>
+                <tr>
+                    <td><input type="text" name="id" placeholder="아이디" name="아이디"></td>
+                    <td rowspan="2"><button>로그인</button></td>
+                </tr>
+                <tr>
+                    <td><input type="password" name="pw" placeholder="비밀번호"></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+
+    <!-- 3번 -->
+    <h3>연습문제-3</h3>
+    <form>
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2">개인 정보 작성</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>이름</td>
+                    <td><input type="text" name="이름"></td>
+                </tr>
+                <tr>
+                    <td>메일 주소</td>
+                    <td><input type="text" name="메일 주소"></td>
+                </tr>
+                <tr>
+                    <td>연락처</td>
+                    <td><input type="text" name="연락처"></td>
+                </tr>
+                <tr>
+                    <td>블로그/홈페이지</td>
+                    <td><input type="text" name="블로그/홈페이지"></td>
+                </tr>
+                <tr>
+                    <th colspan="2"><button>제출하기</button>&nbsp;<input type="reset" value="다시작성"></th>
+                </tr>
+            </tb>
+        </table>
+    </form>
+
+    <!-- 4번 -->
+    <h3>연습문제-4</h3>
+    <form action="01_overview.html" method="post">
+        <a href="https://www.naver.com">
+            <img src="../../images/naver.png" width="200px">
+        </a>
+        <!-- 아이디 -->
+        <label for="id"><strong>아이디</strong></label><br>
+        <input type="text" id="id" name="아이디" required>
+        <label for="id">@naver.com</label>
+        <br><br>
+
+        <!-- 비밀번호 -->
+        <label for="password"><strong>비밀번호</strong></label><br>
+        <input type="password" id="password" name="비밀번호" required><br><br>
+        <label for="password2"><strong>비밀번호 재확인</strong></label><br>
+        <input type="password" id="password2" required> <!-- 서버로 보낼 필요가 없어서 name이 필요가 없음 -->
+        <br><br>
+        
+        <!-- 이름 -->
+        <label for="name"><strong>이름</strong></label><br>
+        <input type="text" id="name" name="이름" maxlength="6" required>
+        <br><br>
+
+        <!-- 생년월일 -->
+        <label for="birth"><strong>생년월일</strong></label><br>
+        <input type="text" id="birth" placeholder="년(4자)" name="연도" size="4" required>
+        <select name="월" required>
+            <option value="" selected>월</option>
+            <option value="1월">1월</option>
+            <option value="2월">2월</option>
+            <option value="3월">3월</option>
+            <option value="4월">4월</option>
+            <option value="5월">5월</option>
+            <option value="6월">6월</option>
+            <option value="7월">7월</option>
+            <option value="8월">8월</option>
+            <option value="9월">9월</option>
+            <option value="10월">10월</option>
+            <option value="11월">11월</option>
+            <option value="12월">12월</option>
+        </select>
+        <input type="text" placeholder="일" name="일" size="1" required>
+        <br><br>
+
+        <!-- 성별 -->
+        <label for="gender"><strong>성별</strong></label><br>
+        <select name="gender
+        " required>
+            <option value="" selected>성별</option>
+            <option value="남">남</option>
+            <option value="여">여</option>
+        </select>
+        <br><br>
+
+        <!-- 본인 확인 이메일(선택) -->
+        <label for="mail"><strong>본인 확인 이메일</strong>(선택)</label><br>
+        <input type="text" id="mail" placeholder="선택입력" name="이메일">
+        <br><br>
+
+        <!-- 휴대전화 -->
+        <label for="phone"><strong>휴대전화</strong></label>
+        <select required>
+            <option value="대한민국" selected>대한민국 +82</option>
+            <option value="미국">미국 +1</option>
+        </select>
+        <br>
+        <input type="text" placeholder="전화번호 입력" name="전화번호" size="10"><button>인증번호 받기</button><br>
+        <input type="text" placeholder="인증번호를 입력하세요" name="인증번호"><br>
 
 
-</form>
+        <button>가입하기</button>
+    </form>
+
 
 
 
