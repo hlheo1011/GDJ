@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <style>
+        .box1 {
+            /* 너비 */ width: 100px;
+            /* 높이 */ height: 100px;
+            /* 배경 */ background-color: limegreen;
+        }
+        .box2 {
+            /* 인라인 요소(span, a 등)는 너비/높이 적용 불가 */
+            width: 100px;
+            height: 100px;
+            background-color: salmon;
+        }
+
+    </style>
+    <div class="box1">BOX1</div>
+    <span class="box2">BOX2</span>
+
+    <hr>
+
+    <style>
+        .wrap {
+            /* 부모 */
+            width: 200px;
+            height: 200px;
+            background-color: burlywood;
+        }
+        .wrap > .box3 {
+            /* 자식 */
+            width: 50%;
+            height: 50%;
+            /* 백분율 사이즈는 부모 기준이다. */
+            background-color: pink;
+        }
+        .wrap > .box4 {
+            width: 25%;
+            height: 25%;
+            background-color: rosybrown;
+        }
+    </style>
+    <div class="wrap">
+        <div class="box3">BOX3</div>
+        <div class="box4">BOX4</div>
+    </div>
+
+    <hr>
+
+    <style>
+        .box5 {
+            /* 테두리 두께 */ border-width: 1px;
+            /* 테두리 종류 */ border-style: solid;
+            /* 테두리 색상 */ border-color: rgb(0, 0, 0);
+            /* 단축 속성 */   border: 0.2px dashed red;
+            /* 방향 선택 */   border-bottom: 3px double blue;
+            /* 방향 = top, bottom, left, right */
+        }
+    </style>
+    <div class="box5">BOX5</div>
+    
+    <hr>
+
+    <style>
+        .box6 {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            /* 모서리 곡률 */
+            border-radius: 5px; /* 전체 4모서리 곡률 5px, 아래코드로 인해 덮어쓰기가 되어서 반영 안됨 */
+            border-radius: 20px 0; /* 20px 0 = 양쪽 대각선을 20px 곡률 주고, 나머지 양쪽 대각선은 곡률 0 */
+            border-radius: 20px 0 20px;   /* 왼쪽 위부터 아래로 1,2,3,4 순서 */
+            border-radius: 5px 10px 5px 20px; /* 시작은 왼쪽 위, 시계방향으로 지정 */
+        }
+    </style>
+    <div class="box6">BOX6</div>
+
+    <hr>
+
+    <style>
+        .box7 {
+            border: 1px solid black;
+            /* 내부 여백 : content와 border 사이 공간 */
+            padding: 0;
+            padding: 10px 50px; /* 10px : 위, 아래 / 50px : 좌,우 */
+            padding: 20px 0px 50px; /* 20px : 위 / 0px : 좌,우 / 50px : 아래 */
+            padding: 10px 40px 80px 150px; /* 10px : 위 / 40px : 우 / 80px : 아래 / 150px : 좌 (위에서부터 시계방향) */
+            padding-left: 50px; /* 한군데 골라서 선택하는 것도 가능함. (left, right, top, bottom */
+            background-color: lightblue;
+        }
+    </style>
+    <div class="box7">BOX7</div>
+
+    <hr>
+
+    <style>
+        .box8 {
+            /* 박스 크기 : 너비/높이 + 테두리 + 내부 여백 
+               이와 같은 방식으로 크기가 결정되는 박스를 content-box 라고 함
+               box-sizing 속성으로 박스의 종류를 결정할 수 있음
+            */
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            padding: 10px;
+            box-sizing: content-box; /* 박스 크기(122px) = content(100px) + padding(20px) + boreder(2px) */
+        }
+    </style>
+    <div class="box8">BOX8</div>
+
+    <hr>
+
+    <style>
+        .box9 {
+            /*
+                박스 크기 = 너비/높이
+                이와 같은 방식으로 크기가 결정되는 박스를 border-box 라고 함
+                box-sizing 속성으로 박스의 종류를 결정할 수 있음
+            */
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            padding: 10px;
+            box-sizing: border-box; /* 박스 크기(100px) = content(78px) + padding(20px) + border(2px) */
+        }
+    </style>
+    <div class="box9">BOX9</div>
+
+    <hr>
+
+    <style>
+        .box10 {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            /* 바깥 여백 */
+            margin: 10px;
+            margin: 10px 0; /* 위아래로 여백 주고, 좌우는 안준다*/
+            margin: 10px 0 10px; /* 위에 10 아래 10 좌우는 0 */
+            margin: 5px 10px 15px 20px; /* 위 : 5, 우 : 10, 아래 : 15, 좌 : 20 */
+            /* 박스를 화면 가운데 배치하기 */
+            margin: 0 auto;
+        }
+    </style>
+        <div class="box10">BOX10</div>
+        
+
+    
+    
+</body>
+</html>
