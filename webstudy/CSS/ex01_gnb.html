@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <style>
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        a {
+            color: #000;
+            text-decoration: none;
+            font-size: 13px;
+        }
+        
+        ul {
+            border-top: 1px solid gray;
+            border-bottom: 1px solid gray;
+            list-style: none;   /* 글머리기호 없애기 */
+            display: flex;      /* 메뉴들의 수평 레이아웃 배치 */
+        }
+
+        ul > li {
+            width: 80px;        /* 너비 */
+            height: 50px;       /* 높이 */
+            text-align: center; /* 가로 가운데 정렬 */
+            line-height: 50px;  /* 세로 가운데 정렬 */
+        }
+
+        ul > li > a {
+            display: inline-block;  /* 너비 키우기 - 블록레벨의 요소만 너비/높이를 가질 수 있음 */
+            width: 100%;    /* %의 기준은 부모 기준이다. (a의 부모인 li) */
+            height: 100%;   /* 부모 요소 li와 같은 높이 */
+
+        }
+
+        ul > li:hover {
+            height: 47px;   /* height와 border 값을 합쳐서 원래 크기 50px을 만듬 */
+            border-bottom: 3px solid limegreen;
+        }
+
+        ul > li:hover > a {
+            color: limegreen;
+        }
+
+
+    </style>
+
+    <ul>
+        <li>
+            <a href="https://dict.naver.com/" id="a">사전</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">뉴스</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">증권</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">부동산</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">지도</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">VIBE</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">도서</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">웹툰</a>
+        </li>
+    </ul>
+
+</body>
+</html>
