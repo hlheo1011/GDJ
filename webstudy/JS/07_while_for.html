@@ -56,12 +56,12 @@
             */
 
             var select = '<select name="month">';
-            for(let m = 1; m <= 12; m++) {
-                select += ('<optione value"' + m + '">' + m + '월</option>');
-            }
-            select += '</select>';
-            document.getElementById('box3').innerHTML = select;
-        </script>
+        for(let m = 1; m <= 12; m++) {
+            select += ('<option value="' + m + '">' + m + '월</option>');
+        }
+        select += '</select>';
+        document.getElementById('box3').innerHTML = select;
+    </script>
 
 
         <div id="box4"></div>
