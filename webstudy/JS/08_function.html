@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        /*
+            함수   : function, 클래스 외부에 독립적으로 존재
+            메소드 : method,   클래스 내부에 포함된 함수
+        */
+    </script>
+
+    <script>
+        /*
+            1. 선언적 함수
+                1) 이름이 있는 함수
+                2) 함수 정의(만들어 두고) + 함수 호출(실행한다)
+                3) 함수 정의 형식
+                    function 함수명(매개변수) {
+                        함수본문
+                    }
+                4) 함수 호출 형식
+                    함수명(인수)
+        */
+
+       // 함수 호출(함수 정의는 항상 먼저 처리되므로 어디서든 호출 가능)
+       func1();
+
+        // 함수 정의
+        function func1() {
+            console.log('Hello World');
+        }
+
+    </script>
+
+    <script>
+        /*
+            2. 익명 함수
+
+                1) 이름이 없는 함수
+                2) 변수에 익명 함수를 저장해서 사용하거나 이벤트 처리용으로 사용
+                3) 호이스팅 되지 않는 함수
+                4) 함수 정의 형식
+                    (1) 일반 익명 함수
+                        function(매개변수) {
+                            함수 본문
+                        }
+                    (2) 화살표(arrow) 함수 (이름이 없는 익명 함수)
+                        (매개변수) => {
+                            함수 본문
+                        }
+                5) 함수 호출 방식
+                    (1) 변수에 저장한 경우에는 변수를 함수처럼 사용
+                    (2) 이벤트 동작 시 자동으로 호출
+        */
+
+        // 함수 정의(변수에 저장)
+        var func2 = function() {
+            console.log('Hello World')
+        }
+        
+        // 함수 호출(변수 == 함수)
+        func2();
+
+        // 함수 정의(화살표 함수)
+        var func3 = () => {
+            console.log('Hello World');
+        }
+
+        // 함수 호출
+        func3();
+                    
+    </script>
+
+    <script>
+
+        /*
+            3. 자기 호출 함수
+                1) 함수를 정의하면 곧바로 호출되는 함수
+                2) 한 번만 사용하면 되는 기능에서 주로 활용
+                3) 함수 정의 및 호출 형식
+                    function(매개변수) {
+
+                    })(인수);
+        */
+
+        (function() {
+            console.log('Hello World');
+        })();
+
+        (() => {
+            console.log("Hello World");
+        })();
+    </script>
+
+    <script>
+
+        /*
+            4. 인수와 매개변수
+                1) 매개변수 선언 시 선언 키워드(var, let, const)를 사용하지 않음
+
+    </script>
+    
+</body>
+</html>
