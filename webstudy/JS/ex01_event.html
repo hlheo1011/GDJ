@@ -166,12 +166,12 @@
         // 배열과 인덱스
         var idx = 0;
         var images = [
-            'fruit1.jpg',
-            'fruit2.jpg',
-            'fruit3.jpg',
-            'fruit4.jpg',
-            'fruit5.jpg',
-            'fruit6.jpg'
+            'animal1.jpg',
+            'animal2.jpg',
+            'animal3.jpg',
+            'animal4.jpg',
+            'animal5.jpg',
+            'animal6.jpg'
         ];
     
         // 초기 origin
@@ -204,6 +204,53 @@
 
             }
         }
+    </script>
+
+    <hr>
+
+    <!-- 4. 체크 박스를 체크 이미지로 바꾸기 -->
+    <div id="box4">
+        <ul>
+            <li>Java</li>
+            <li>Oracle</li>
+            <li>HTML/li>
+            <li>CSS</li>
+            <li>JS</li>
+        </ul>
+    </div>
+    <style>
+        #box4 > ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        #box4 > ul > li {
+            margin-top: 5px;
+            width: 16px;
+            height: 16px;
+            background-image: url(../../images/uncheck.png);
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            text-indent: 20px;
+        }
+        #box4 > ul > li:hover {
+            cursor: pointer;
+        }
+        #box4 > ul > li.checked {
+            background-image: url(../../images/check.png);
+        }
+    </style>
+    <script>
+
+        // 문서 객체
+        var list = document.querySelectorAll('#box4 > ul > li');
+
+        // 클릭 이벤트
+        for(let i = 0; i < list.length; i++) {
+            list[i].onclick = function(event) {
+                list[i].classList.toggle('checked') // 클릭할때마다 class=checked가 토글됨(계속 바뀜).
+            }
+        }
+
     </script>
     
 </body>
