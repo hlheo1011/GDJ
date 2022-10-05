@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.6.1.min.js"></script>
+</head>
+<body>
+
+    <div id="box1">
+        <button id="btn1">클릭</button>
+    </div>
+    <script>
+        $('#btn1').on('click', function(event){
+
+        });
+        $.ajax({
+            'type': 'GET',              // 요청 메소드(Request Method)
+            'url': 'datadf.txt',          // 요청 서버 경로
+            'async': true,              // 통신 방식(true: 비동기 통신, false: 동기 통신, 생략하면 비동기 통신)
+            'dataType': 'text',         // 응답 데이터 타입(text, xml, json 등)
+            'success': function(data){  // 매개변수 data로 응답 데이터가 전달됨(responseText, responseXML 등)
+                $('#box1').append($('<div>').text(data));
+            },
+            'error': function(jqXHR, textStatus, errorThrown){
+                console.log('status', jqXHR.status);              // 응답코드(404)
+                console.log('statusText', jqXHR.statusText);      // 응답코드텍스트(Not Found)
+                console.log('responseText', jqXHR.responseText);  // 응답텍스트(서버측에서 전송한 예외메시지)
+                console.log(textStatus);  // error      (안 중요함)
+                console.log(errorThrown); // Not Found  (안 중요함)
+            }
+        });
+    </script>
+
+    <!-- 1. XML 읽기 -->
+    <div><button id="btn1">클릭</button></div>
+    <div id="box2">
+        <table border="1">
+            <thead>
+                <tr>
+                    <td>제목</td>
+                    <td>저자</td>
+                    <td>가격</td>
+                </tr>
+            </thead>
+            <tbody class="book_list"></tbody>
+        </table>
+    </div>
+    <script>
+        $('#btn2').on('click', function(event){
+            $.ajax({
+                'type': 'GET',
+                'url': 'books1.xml',
+                'dataType': 'xml',
+                'success': function(data){  // data <-xhr.responseXML (JS:var data=xhr.responseXML)
+                    $.each($(data).find('book'), function(i, book){
+                        var tr = '<tr>';
+                        tr += '<td>' + $(book).find('title').text() + '</td>';
+                        tr += '<td>' + $(book).find('author').text() + '</td>';
+                        tr += '<td>' + $(book).find('price').text() + '</td>';
+                        $('#box2 .book_list').append(tr);
+                    });
+                }
+            });
+        });
+    </script>
+    
+</body>
+</html>
