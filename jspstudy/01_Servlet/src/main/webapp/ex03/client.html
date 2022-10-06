@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<!-- 1. GET 방식 요청 : <a> 태그 -->
+	<div>
+		<a href="http://localhost:9090/01_Servlet/AnchorServlet">정상링크1</a>
+	</div>
+	<div>
+		<a href="/01_Servlet/AnchorServlet">정상링크2</a>
+	</div>
+	<div>
+		<a href="/AnchorServlet">불량링크1 (실행 안됨. /로 시작하면 컨택스트패스로 인식함)</a>
+		<!-- 실행 안됨. /로 시작하면 컨택스트패스로 인식함.-->
+	</div>
+	<div>
+		<a href="01_Servlet/AnchorServlet">불량링크2 (실행 안됨. 컨텍스트패스는 슬래시로 시작해야 함 - URLMapping으로 인식한다.)</a>
+		<!-- 실행 안됨. 컨텍스트패스는 슬래시로 시작해야 함 - URLMapping으로 인식한다. -->
+	</div>
+	<div>
+		<a href="AnchorServlet">불량링크3 (URL 매핑으로 인식되지만 HTML 문서의 경로에 따라 실행 여부가 다름)</a>
+		<!-- 실행 안됨. /가 없으면 (01_Servlet이 아닌 ex03 폴더에 있는 파일을 찾으려고 한다) URLMapping으로 인식한다. -->
+	</div>
+	
+	<!-- 연습 -->
+	<!-- 응답 : 1+2=3 -->
+	<div>
+		<a href="/01_Servlet/AnchorServlet?a=1&b=2">더하기</a>
+	</div>
+	
+	
+	
+</body>
+</html>
