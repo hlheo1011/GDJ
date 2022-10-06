@@ -32,6 +32,27 @@
 		<a href="/01_Servlet/AnchorServlet?a=1&b=2">더하기</a>
 	</div>
 	
+	<hr>
+	
+	<!-- 2. GET 방식 요청 : 자바스크립트 location -->
+	<div>
+		<button id="btn1">링크1</button>
+		<button id="btn2" data-name="홍길동">링크2</button>
+	</div>
+	<script src="../js/jquery-3.6.1.min.js"></script>
+	<script>
+		$('#btn1').on('click', function(event){
+			// location.href = '/01_Servlet/LocationServlet';
+			open('/01_Servlet/LocationServlet');	// open(url, [name], [features])
+		});
+		$('#btn2').click(function(event){
+			location.href = '/01_Servlet/LocationServlet?param=' + $(this).data('name');
+			// event.type = click
+			// event.target = #btn2
+			// $(this).data('name') == 이것도 btn2 이다
+		})
+	</script>
+	
 	
 	
 </body>
