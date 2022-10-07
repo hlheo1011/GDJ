@@ -45,22 +45,22 @@ header {
     font-size: 20px;
 }
 footer {
-    margin-top:30px;
+    margin-top: 30px;
     width: 100%;
     display: flex;
-    justify-content: space-between; /* 사이 공백주기 */
+    justify-content: space-between;
     text-align: center;
 }
-.join,.find {
+.join, .find {
     width: 49%;
 }
 .title {
     font-size: 12px;
     font-weight: bold;
 }
-.desc{
+.desc {
     font-size: 10px;
-    color:#777777;
+    color: #777777;
 }
 .btn_footer {
     display: block;
@@ -68,9 +68,6 @@ footer {
     height: 50px;
     line-height: 50px;
     background-color: #007777;
-    color:#FFFFFF;
-    margin:10px auto;
-    
-
-
+    color: #FFFFFF;
+    margin: 10px auto;
 }
