@@ -1,4 +1,4 @@
-package ex06;
+package ex07_naver_api;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,15 +17,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/MovieXMLServlet")
+@WebServlet("/MovieJSONServlet")
 
 
-public class MovieXMLServlet extends HttpServlet {
+public class MovieJSONServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-
+       
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	
 		// 클라이언트 아이디, 시크릿
 		String clientId = "ZuA2Hxw8DnfFAdWjRSk4";
 		String clientSecret = "oaR8PF5cnk";
@@ -46,7 +46,7 @@ public class MovieXMLServlet extends HttpServlet {
 		}
 		
 		// API 접속
-		String apiURL = "https://openapi.naver.com/v1/search/movie.xml?query=" + query + "&display=" + display;
+		String apiURL = "https://openapi.naver.com/v1/search/movie.json?query=" + query + "&display=" + display;
 		URL url = null;
 		HttpURLConnection con = null;
 		try {
@@ -109,7 +109,7 @@ public class MovieXMLServlet extends HttpServlet {
 		}
 		
 		// client.html로 API 응답 결과 보내기
-		response.setContentType("application/xml; charset=UTF-8");
+		response.setContentType("application/json; charset=UTF-8");
 		
 		PrintWriter out = response.getWriter();
 		out.println(sb.toString());

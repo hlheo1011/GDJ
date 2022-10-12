@@ -1,4 +1,4 @@
-package ex04;
+package ex04_redirect;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

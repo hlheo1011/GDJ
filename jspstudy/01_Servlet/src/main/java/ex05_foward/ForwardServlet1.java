@@ -1,8 +1,8 @@
-package ex04;
+package ex05_foward;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,30 +10,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/ForwardServlet2")
+@WebServlet("/ForwardServlet1")
 
-public class ForwardServlet2 extends HttpServlet {
+public class ForwardServlet1 extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		// 요청 파라미터
-		String a = request.getParameter("a");
 		
-		// 응답
-		response.setContentType("text/html; charset=UTF-8");
+		// Forward
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/ForwardServlet2");
+		requestDispatcher.forward(request, response);
 		
-		PrintWriter out = response.getWriter();
-		out.println("<h1>파라미터 a = " + a + "</h1>");
-		out.close();
+		// 포워드는 요청은 한번 2번째 주소가 보이지 않는다
+		
 		
 	}
 
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
-		
 		
 		
 	}
