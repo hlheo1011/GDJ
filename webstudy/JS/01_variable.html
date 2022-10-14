@@ -20,6 +20,7 @@
 
         // JavaScript(JS) == ECMAScript(ES)
 
+
     </script>
 
     <script>
@@ -36,7 +37,7 @@
                     (1) true, false
                 4) null
                     (1) 의도적으로 값을 비운 상태
-                    (2) nill
+                    (2) null
                 5) undefined
                     (1) 값이 저장된 적이 없는 상태(초기화를 안한 변수)
                     (2) undefined
@@ -69,7 +70,7 @@
                 1) hoisting
                 2) 코드 중에는 항상 먼저 처리되는 코드가 있음
                 3) 변수의 선언이나 함수의 정의 등이 호이스팅에 속함
-                4) 호이스팅 대상 : var,
+                4) 호이스팅 대상 : var, let, const, function, class
         */
 
     </script>
@@ -131,6 +132,7 @@
         */
        
         var a = '100';
+        console.log(a, typeof a);
         var b = Number(a);
         console.log(b, typeof b);
         var b = parseInt(a);
@@ -147,9 +149,9 @@
         console.log(d, typeof d);
 
         var e = '100';
-        console.log(String(e));
+        console.log(String(e), typeof e);
         var e = '1.5';
-        console.log(String(e));
+        console.log(String(e), typeof e);
 
     </script>
     

@@ -52,6 +52,7 @@
        console.log(a == b, a === b);   // true, false
 
        console.log(1 + '1');    // '11'
+       console.log(1 + 1);    // '2'
        console.log('1' + '1');  // '11'
        console.log('5' - 2);    // 3
        console.log('5' - '3');  // 3
@@ -65,10 +66,10 @@
         // 8시간 근무 : 시급
         // 8시간 초과 근무 : 시급 * 1.5
         // 10시간 근무하면 일급 얼마?
-        var payPerHour = 9160;  // const payPerHour = 9160; (프로그래밍 내부에서 시급이 변할일이 없을때 사용)
+        var payPerHour = 9160; // const payPerHour = 9160;
         var workTime = 10;
-        var regular = payPerHour * workTime; // 기본 급여
-        var extra = (workTime <= 8) ? 0 : (workTime - 8) * payPerHour * 0.5; // 초과급여. (1.5가 아닌 이유는, 정규급여(resular)에서 받아감)
+        var regular = payPerHour * workTime;    // 기본 급여
+        var extra = (workTime <= 8) ? 0 : (workTime - 8) * payPerHour * 0.5; // 초과급여
         console.log(regular + extra);
         
 
