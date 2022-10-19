@@ -143,5 +143,27 @@ public class BoardDao {
 		}
 		return result;
 	}
+	
+	// 6. 게시글 삭제
+	public int deleteBoard(int board_no) {
+		int result = 0;
+		try {
+			con = dataSource.getConnection();				// 언제나 연결부터(DB)
+			sql = "DELETE FROM BOARD WHERE BOARD_NO = ?";	// 쿼리문
+			ps = con.prepareStatement(sql);					// 쿼리문을 실행할 수 있는 객체 ps
+			ps.setInt(1, board_no);							// 변수처리 (첫번째 물음표에 board_no 넣어주세요)
+			result = ps.executeUpdate();					// DELETE문은 executeUpdate() 메소드 사용. (DML은 사용하는 메소드(=executeUpdate())가 동일하다)
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(con, ps, null);
+		}
+		return result;
+	}
+	
+	
+	
+	
+	
 
 }

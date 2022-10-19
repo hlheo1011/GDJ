@@ -22,8 +22,8 @@ public class BoardListService implements BoardService {
 		
 		// 어디로 / 어떻게
 		ActionForward af = new ActionForward();
-		af.setView("/board/list.jsp");	// webapp/board/list.jsp를 의미함
-		af.setRedirect(false);	// 포워드
+		af.setView("/board/list.jsp");  // webapp/board/list.jsp를 의미함
+		af.setRedirect(false);  // 포워드
 		return af;
 	}
 

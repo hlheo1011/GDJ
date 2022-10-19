@@ -1,4 +1,4 @@
-package contoller;
+package controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import common.ActionForward;
 import service.BoardAddService;
 import service.BoardDetailService;
-import service.BoardEditService;
 import service.BoardListService;
-import service.BoardModifyService;
 import service.BoardRemoveService;
 import service.BoardService;
 
@@ -33,48 +31,42 @@ public class BoardController extends HttpServlet {
 		// 요청 확인
 		String requestURI = request.getRequestURI();
 		String contextPath = request.getContextPath();
-		String urlMapping = requestURI.substring(contextPath.length() + 1);
+		String urlMapping = requestURI.substring(contextPath.length());
 		
-		// BoardService 선언
+		// BoardService 객체
 		BoardService service = null;
 		
-		// ActionForward 선언
+		// ActionForward 객체
 		ActionForward af = null;
 		
-		// 요청(urlMapping)에 따른 Service 선택
+		// 요청에 따른 Service 선택
 		switch(urlMapping) {
-		// 비즈니스 로직이 있는 경우
-		case "board/list.do":
+		//비즈니스 로직
+		case "/board/list.do":
 			service = new BoardListService();
 			break;
-		case "board/detail.do":
+		case "/board/detail.do":
 			service = new BoardDetailService();
 			break;
-		case "board/add.do":
+		case "/board/add.do":
 			service = new BoardAddService();
 			break;
-		case "board/edit.do":
-			service = new BoardEditService();
-			break;
-		case "board/modify.do":
-			service = new BoardModifyService();
-			break;
-		case "board/remove.do":
+		case "/board/remove.do":
 			service = new BoardRemoveService();
 			break;
-		// 비즈니스 로직이 없는 경우(단순 이동)
-		case "board/write.do":
+		// 단순이동(포워딩)
+		case "/board/write.do":
 			af = new ActionForward();
 			af.setView("/board/write.jsp");
-			af.setRedirect(false);		// 단순이동은 forward
+			af.setRedirect(false);
+			// af.setRedirect(false)는 생략 가능하다. 원래 false라서.
 			break;
 		}
 		
-		// 요청(urlMaplling)에 따른 Service 생성
-
-		
-		// Service 실행
+		// 선택된 서비스의 실행
+		// execute 메소드에 throws Exception이 있어서 try, catch 필요
 		try {
+			// service가 null인 경우도 있어서
 			if(service != null) {
 				af = service.execute(request, response);
 			}
@@ -82,7 +74,8 @@ public class BoardController extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		// 어디로 어떻게?
+		
+		// 어디로 어떻게 이동하는가?
 		if(af != null) {
 			if(af.isRedirect()) {
 				response.sendRedirect(af.getView());
@@ -90,7 +83,6 @@ public class BoardController extends HttpServlet {
 				request.getRequestDispatcher(af.getView()).forward(request, response);
 			}
 		}
-		
 	}
 
 
