@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- namespace="mapper의 패키기 경로" -->
+  
+<mapper namespace="mybatis.mapper.student">
+
+	<!-- 1. 학생목록 -->
+	<select id="selectAllStudents" resultType="Student">
+		SELECT STU_NO, NAME, KOR, ENG, MATH, AVE, GRADE
+		  FROM STUDENT
+		 ORDER BY STU_NO
+	</select>
+	
+	<!-- 2. 전체학생수 -->
+	<select id="selectAllStudentsCount" resultType="int">
+		SELECT COUNT(*)
+	      FROM STUDENT
+	</select>
+	
+	<!-- 3. 전체평균 -->
+	<select id="selectAllStudentAverage" resultType="double">
+		SELECT NVL(AVG(AVE), 0)
+		  FROM STUDENT
+	</select>
+	<!--
+		SELECT AVG(AVE) 일 때, NULL값이 반환되면
+		오류(resultType이 double 이기 때문에 타입 불일치)가 발생해서
+		SELECT AVG(AVE)라고 쓰지 않는다.
+		NVL(AVG(AVE), 0) = NULL 이면 0을 반환하겠다.
+	-->
+	
+	<!-- 4. 학생등록 -->
+	<insert id="insertStudent" parameterType="Student">
+		INSERT INTO STUDENT
+			(STU_NO, NAME, KOR, ENG, MATH, AVE, GRADE)
+		VALUES
+			(STUDENT_SEQ.NEXTVAL, #{name}, #{kor}, #{eng}, #{math}, ${ave}, #{grade})
+	</insert>
+	
+	<!-- 5. 평균범위조회 -->
+	<!-- 3rd party영역에서는 객체 = Map이다. -->
+	<!-- Map = begin과 end가 들어가 있다. -->
+	<select id="selectStudentsByAve" parameterType="Map" resultType="Student">
+		<![CDATA[
+		SELECT STU_NO, NAME, KOR, ENG, MATH, AVE, GRADE
+		  FROM STUDENT	
+		 WHERE AVE >= #{begin} AND AVE <= #{end}
+		 ]]>
+	</select>
+	<!-- CDATA로 묶어준 모든 부분은 등호(?)로 인식해 주세요. (AND AVE <=에서 '<'를 태그 꺽새랑 충돌일어나서 그럼) -->
+	<!-- 6번처럼 문제 되는 꺽새만 묶어주기도 가능 함. -->
+	
+	<!-- 6.	평균범위조회 : 개수 -->
+	<select id="selectStudentsByAveCount" parameterType="Map" resultType="int">
+		SELECT COUNT(*)
+		  FROM STUDENT
+		 WHERE AVE >= #{begin} AND AVE <![CDATA[<]]>= #{end}
+	</select>
+	
+	<!-- 7. 평균범위조회 : 평균 -->
+	<select id="selectStudentsByAveAverage" parameterType="Map" resultType="double">
+		SELECT NVL(AVG(AVE), 0)
+		  FROM STUDENT
+		 WHERE AVE >= #{begin} AND AVE <![CDATA[<]]>= #{end}
+	</select>
+	
+	<!-- 8. 학생삭제 -->
+	<delete id="deleteStudent" parameterType="int">
+		DELETE
+		  FROM STUDENT
+		 WHERE STU_NO = #{stuNo}
+	</delete>
+
+
+</mapper>
