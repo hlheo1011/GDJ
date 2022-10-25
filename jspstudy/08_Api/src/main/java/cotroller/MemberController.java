@@ -1,6 +1,7 @@
-package controller;
+package cotroller;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,12 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import common.ActionForward;
-import service.MemberAddService;
-import service.MemberDetailService;
-import service.MemberListService;
-import service.MemberModifyService;
-import service.MemberRemoveService;
-import service.MemberService;
+import service.NaverCaptchaService;
+import service.NaverCaptchaServiceImpl;
 
 
 @WebServlet("*.do")
@@ -35,45 +32,30 @@ public class MemberController extends HttpServlet {
 		String contextPath = request.getContextPath();
 		String urlMapping = requestURI.substring(contextPath.length());
 		
-		// MemberService 객체
-		MemberService service = null;
+		// NaverCaptchaServiceImpl 객체 생성
+		NaverCaptchaService service = new NaverCaptchaServiceImpl();
 		
 		// ActionForward 객체
 		ActionForward af = null;
 		
-		// 요청에 따른 Service 선택
+		// 요청에 따른 Service 선택 및 실행
 		switch(urlMapping) {
-		case "/member/manage.do":
-			af = new ActionForward("/member/manage.jsp", false);
+		case "/member/loginPage.do":
+			// 캡차키 발급 요청
+			String key = service.getCaptchaKey();
+			// 캡차이미지 발급 요청
+			Map<String, String> map = service.getCaptchaImage(request, key);
+			request.setAttribute("dirname", map.get("dirname"));
+			request.setAttribute("filename", map.get("filename"));
+			// ActionForward 생성
+			af = new ActionForward("/member/login.jsp", false);
 			break;
-		case "/member/list.do":
-			service = new MemberListService();
+		case "/member/refreshCaptcha.do":
+			service.refreshCaptcha(request, response);
 			break;
-		case "/member/detail.do":
-			service = new MemberDetailService();
-			break;
-		case "/member/add.do":
-			service = new MemberAddService();
-			break;
-		case "/member/modify.do":
-			service = new MemberModifyService();
-			break;
-		case "/member/remove.do":
-			service = new MemberRemoveService();
-		break;
-			
 		}
 		
-		// 선택된 서비스의 실행
-		// execute 메소드에 throws Exception이 있어서 try, catch 필요
-		try {
-			// service가 null인 경우도 있어서
-			if(service != null) {
-				service.execute(request, response);
-			}
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+	
 		
 		
 		// 어디로 어떻게 이동하는가?

@@ -71,6 +71,27 @@ public class MemberDao {
 		return result;
 	}
 	
+	// 5. 회원수정
+	public int updateMember(Member member) {
+		SqlSession ss = factory.openSession(false);
+		int result = ss.update(mapper + "updateMember", member);
+		// ss.update, delete, insert >> 는 아무렇게나 써도 된다.(아무 문제 없음) 어차피 연결되는 커리문으로 동작한다.
+		if(result > 0) {
+			ss.commit();
+		}
+		ss.close();
+		return result;
+	}
 	
+	// 6. 회원삭제
+	public int deleteMember(int memberNo) {
+		SqlSession ss = factory.openSession(false);
+		int result = ss.delete(mapper + "deleteMember", memberNo);
+		if(result > 0) {
+			ss.commit();
+		}
+		ss.close();
+		return result;
+	}
 
 }
