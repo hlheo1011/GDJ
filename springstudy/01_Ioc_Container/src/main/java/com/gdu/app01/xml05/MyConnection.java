@@ -41,6 +41,7 @@ public class MyConnection {
 		Connection con = null;
 		try {
 			con = DriverManager.getConnection(url, user, password);
+			System.out.println("생성완료!");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

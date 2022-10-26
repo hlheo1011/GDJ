@@ -15,6 +15,7 @@ public class SpringMain {
 		
 		if(con != null) {
 			con.close();
+			System.out.println("해제완료!");
 		}
 		
 		ctx.close();
