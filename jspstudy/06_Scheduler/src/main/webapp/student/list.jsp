@@ -78,7 +78,7 @@
 							<td colspan="8">등록된 학생이 없습니다.</td>
 						</tr>
 					</c:if>
-					<c:if test="${sount ne 0}">
+					<c:if test="${count ne 0}">
 						<c:forEach items="${students}" var="s">
 							<tr>
 								<td>${s.stuNo}</td>

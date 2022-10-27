@@ -45,6 +45,19 @@ public class MemberController extends HttpServlet {
 		case "/member/logout.me":
 			af = service.logout(request, response);
 			break;
+		case "/member/join.me":
+			af = new ActionForward("/member/join.jsp", false);	// (페이지만 바꾸는) 단순이동.
+			break;
+		case "/member/register.me":
+			service.register(request, response);	// af없이 register() 메소드 내부에서 직접 이동
+			break;
+			// request에 parameter 4개 들어있다. join에서 <input name="파라미터이름" 4개를 만들었기 때문에!!!
+		case "/member/cancel.me":
+			service.cancel(request, response);	   // af없이 cancel() 메소드 내부에서 직접 이동
+			break;
+		// 매핑 잘못 작성한 경우
+		default:
+			System.out.println("매핑을 확인하세요");
 		}
 	
 		

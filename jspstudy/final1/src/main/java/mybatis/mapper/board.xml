@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- namespace="mapper의 패키기 경로" -->
+  
+<mapper namespace="mybatis.mapper.board">
+	 
+	<!-- 1. 게시글 목록	-->
+	<select id="selectAllBoards" resultType="Board">
+		SELECT BOARD_NO, WRITER, TITLE, CREATE_DATE
+		  FROM BOARD
+		 ORDER BY BOARD_NO DESC
+	</select>
+	
+	<!-- 2. 전체 게시글 수 -->
+	<select id="selectAllBoardsCount" resultType="int">
+		SELECT NVL(COUNT(*), 0)
+		  FROM BOARD
+	</select>
+	
+	<!-- 3. 게시글 작성 -->
+	<insert id="insertBoard" parameterType="Board">
+		INSERT INTO BOARD
+			(BOARD_NO, WRITER, TITLE, CREATE_DATE)
+		VALUES
+			(BOARD_SEQ.NEXTVAL, #{writer}, #{title}, TO_CHAR(SYSDATE, 'YYYY-MM-DD'))
+	</insert>
+	
+	<!-- 4. 게시글 상세보기 -->
+	<select id="selectBoardByNo" parameterType="int" resultType="Board">
+		SELECT BOARD_NO, WRITER, TITLE, CREATE_DATE
+		  FROM BOARD
+		 WHERE BOARD_NO = #{boardNo}
+	</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>

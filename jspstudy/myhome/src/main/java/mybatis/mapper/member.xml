@@ -15,5 +15,24 @@
 		 <!-- WHERE = 조건 : 아이디가 일치하는가? 비밀번호가 일치하는가? -->
 		 <!-- 아이디, 비밀번호가 일치하면 Member 반환, 아니면 Null값 반환  -->
 	</select>
+	
+	<insert id ="insertMember" parameterType="Member">
+		INSERT INTO MEMBER
+			(MEMBER_NO, ID, PW, NAME, EMAIL, REGISTED_DATE)
+		VALUES
+			(MEMBER_SEQ.NEXTVAL, #{id}, #{pw}, #{name}, #{email}, TO_CHAR(SYSDATE, 'YYYY-MM-DD'))
+	</insert>
 
+
+	<delete id="deleteMember" parameterType="int">
+		DELETE
+		  FROM MEMBER
+		 WHERE MEMBER_NO = #{memberNo}
+	</delete>
+	<!-- #{memberNo}에서 #이랑 $둘 다 사용 가능 -->
+	<!--
+		$는 수치 데이터에서 사용 가능
+		#을 붙여주면, 변수값 앞 뒤로 따옴표를 붙여주고(mybatis 내부에서)
+		$를 붙여주면, 따옴표가 안붙는다.
+	-->
 </mapper>
