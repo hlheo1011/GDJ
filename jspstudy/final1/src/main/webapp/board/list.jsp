@@ -34,7 +34,14 @@
 					<td colspan="4">게시물이 없습니다.</td>
 				</c:if>
 				<c:if test="${count != 0}">
-					<td colspan="4">게시글이 있어!!</td>
+					<c:forEach items="${boards}" var="b">
+						<tr>
+							<td>${b.boardNo}</td>
+							<td>${b.writer}</td>
+							<td><a href="${contextPath}/board/detail.jsp">${b.title}</a></td>
+							<td>${b.createDate}</td>
+						</tr>					
+					</c:forEach>
 				</c:if>
 			</tr>
 			

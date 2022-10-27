@@ -26,7 +26,7 @@
 			<tbody>
 				<tr>
 					<td>작성자</td>
-					<td><input type="text" placeholder="관리자" name="writer" value="${writer}"></td>
+					<td><input type="text" placeholder="작성자" name="writer" value="${writer}" readonly></td>
 				</tr>
 				<tr>
 					<td>제목</td>
