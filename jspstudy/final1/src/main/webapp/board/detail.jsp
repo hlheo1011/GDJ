@@ -10,16 +10,16 @@
 </head>
 <body>
 	
-		<form method="POST" action="${contextPath}/board/add.do">
+		<form method="POST" action="${contextPath}/board/modify.do">
 		<table border="1">
 			<tbody>
 				<tr>
 					<td>순번</td>
-					<td>${board.boardNo}></td>
+					<td>${board.boardNo}</td>
 				</tr>
 				<tr>
 					<td>작성자</td>
-					<td>${board.writer}></td>
+					<td>${board.writer}</td>
 				</tr>
 				<tr>
 					<td>제목</td>

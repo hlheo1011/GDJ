@@ -10,11 +10,9 @@
 </head>
 <body>
 
-	<h1>여기 예쁜 동물 좀 보세요</h1>
-	<img src="${contextPath}/resources/images/animal1.jpg" width="200px">
-	
-	<h1>저도 봐 주세요</h1>
-	<img src="${contextPath}/assets/images/animal2.jpg" width="200px">
+	<h1>보고 싶은 동물 ohsoon2🐹🐥🕊 ${param.filename}</h1>
+	<img src="${contextPath}/resources/images/${param.filename}" width="200px">
+
 
 
 </body>

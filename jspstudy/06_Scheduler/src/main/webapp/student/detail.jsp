@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>신규학생등록</title>
 <script src="../assets/js/jquery-3.6.1.min.js"></script>
-<script>엠시티웨딩컨벤션
+<script>
 
 	$(document).ready(function(){
 		
