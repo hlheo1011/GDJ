@@ -24,9 +24,9 @@ public class SchoolMain {
 		}
 		
 		School school2 = new School();
-		school.name = "경인중학교";
+		school2.name = "경인중학교";
 		
-		
+
 		/*
 		School school = new School();
 		

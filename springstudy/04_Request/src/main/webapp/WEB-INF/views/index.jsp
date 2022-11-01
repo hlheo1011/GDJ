@@ -40,7 +40,7 @@
 			<input type="text" name="id" placeholder="아이디">
 		</div>
 		<div>
-			<input type="text" name="pw" placeholder="비밀번호">
+			<input type="text" name="pw" placeholder="패스워드">
 		</div>
 		<button>전송</button>
 	</form>
@@ -48,7 +48,11 @@
 	<hr>
 	
 	 <div>
-	 	<a href="${contextPath}/board/detail2?title=공지사항&hit=10">게시글</a>
+	 	<a href="${contextPath}/board/detail2?title=공지사항&hit=10">전송</a>
+	 </div>
+	 
+	 	 <div>
+	 	<a href="${contextPath}/board/detail3?title=공지사항&hit=10">전송</a>
 	 </div>
 	
 </body>
