@@ -24,7 +24,6 @@
 		$('#btn1').click(function(){ fn_ajax1(); });
 		$('#btn2').click(function(){ fn_ajax2(); });
 		$('#btn3').click(function(){ fn_ajax3(); });
-		$('#btn4').click(function(){ fn_ajax4(); });
 
 	});
 	
@@ -99,40 +98,6 @@
 		
 	}	// function
 	
-	function fn_ajax4(){
-		
-		$('#result').empty();
-		
-		$.ajax({
-			
-			/* 요청 */
-			
-			url: '${contextPath}/member/detail4',
-			
-			// JSON 데이터를 서버로 보낼 때는 반드시 post방식을 사용해야 함
-			type: 'post',
-			
-			// data에 파라미터가 없음을 주의!
-			// 파라미터로 전달되지 않기 때문에 주소창을 이용한 get방식이 불가능함
-			data: JSON.stringify({
-				'id': $('#id').val(),
-				'pw': $('#pw').val()
-			}),
-			// 서버로 보내는 JSON 데이터의 MIME-TYPE을 작성해 줌
-			contentType: 'application/json',
-			/* 응답 */
-			dataType: 'json',
-			success: function(resData){
-				var ul = '<ul>';
-				ul += '<li>' + resData.id + '</li>';
-				ul += '<li>' + resData.pw + '</li>';
-				ul += '</ul>';
-				$('#result').html(ul);
-			}
-			
-		});	// ajax
-		
-	}	// function
 	
 </script>
 </head>
@@ -152,7 +117,6 @@
 			<input type="button" value="전송1" id="btn1">
 			<input type="button" value="전송2" id="btn2">
 			<input type="button" value="전송3" id="btn3">
-			<input type="button" value="전송4" id="btn4">
 		</div>
 	</form>
 	

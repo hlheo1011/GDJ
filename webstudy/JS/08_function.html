@@ -154,9 +154,9 @@
             }
             */
             // 2. 논리 OR 연산의 Short Circuit Evaluation 활용
-            // great에 값이 전달되었다면 greet은 undefined가 아니므로 true로 처리됨 -> greet이 true이면 논리 OR(||)은 true이므로 (greet = '안녕')을 처리하지 않음
-            // great에 값이 전달되지 않는다면 greet은 undefined 이므로 false로 처리됨 -> greet이 true이면 논리 OR(||)은 계속 수행되므로 (greet = '안녕')을 처리함
-            greet || (great = '안녕');
+            // greet에 값이 전달되었다면 greet은 undefined가 아니므로 true로 처리됨 -> greet이 true이면 논리 OR(||)은 true이므로 (greet = '안녕')을 처리하지 않음
+            // greet에 값이 전달되지 않는다면 greet은 undefined 이므로 false로 처리됨 -> greet이 true이면 논리 OR(||)은 계속 수행되므로 (greet = '안녕')을 처리함
+            greet || (greet = '안녕');
             console.log(greet, name);
         }
 
