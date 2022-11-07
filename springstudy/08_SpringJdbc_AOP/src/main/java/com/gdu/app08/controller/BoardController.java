@@ -19,7 +19,9 @@ import lombok.AllArgsConstructor;
 @Controller
 public class BoardController {
 
-
+	// Controller에 나오는 모든 Method는 JoinPoint라고 불린다.
+	
+	
 	// @Autowired가 없음에 주의!
 	private BoardService boardService;
 	
