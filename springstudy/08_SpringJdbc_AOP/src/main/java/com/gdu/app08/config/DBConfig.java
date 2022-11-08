@@ -25,14 +25,14 @@ import org.springframework.transaction.interceptor.TransactionInterceptor;
 @EnableTransactionManagement
 
 /*
- 	@EnableAspectJautiProxy
- 	안녕. 난 Aspect를 자동으로 동작시키는 애너테이션이야.
+	@EnableAspectJAutoProxy
+	안녕. 난 Aspect를 자동으로 동작시키는 애너테이션이야.
 */
 @EnableAspectJAutoProxy
 
 @Configuration
 public class DBConfig {
-	
+
 	// SpringJdbc 처리를 위한 DriverManagerDataSource와 JdbcTemplate을 Bean으로 등록한다.
 	
 	@Bean
@@ -47,7 +47,7 @@ public class DBConfig {
 	
 	@Bean
 	public JdbcTemplate jdbcTemplate() {
-		return new JdbcTemplate(dataSource());	// dataSource() 의존 관계 처리
+		return new JdbcTemplate(dataSource());  // dataSource() 의존 관계 처리
 	}
 	
 	
@@ -68,43 +68,44 @@ public class DBConfig {
 		RuleBasedTransactionAttribute attribute = new RuleBasedTransactionAttribute();
 		attribute.setName("*");
 		attribute.setRollbackRules(Collections.singletonList(new RollbackRuleAttribute(Exception.class)));
-	
+		
 		MatchAlwaysTransactionAttributeSource source = new MatchAlwaysTransactionAttributeSource();
 		source.setTransactionAttribute(attribute);
 		
 		return new TransactionInterceptor(transactionManager(), source);
 		
-	}	
-
+	}
+	
 	
 	// 트랜잭션 인터셉터를 Advice로 등록하는 Advisor를 Bean으로 등록한다.
 	
 	@Bean
 	public Advisor advisor() {
 		
+		/*
+			AOP 기본 용어
+			1. 조인포인트 : AOP를 동작시킬 수 있는 메소드 전체      (목록, 상세, 삽입, 수정, 삭제 메소드)
+			2. 포인트컷   : 조인포인트 중에서 AOP를 동작시킬 메소드 (삽입, 수정, 삭제 메소드)
+			3. 어드바이스 : 포인트컷에 동작시킬 AOP 동작 자체       (로그, 트랜잭션 등)
+		*/
+		
 		// 언제 Advice를 동작시킬 것인가?
 		// 포인트컷(PointCut)을 결정해야 한다.
 		
 		// 포인트컷 표현식
 		/*
-		 	1. 기본 형식
-		 		execution(리턴타입 패키지.클래스.메소드(매개변수))
-		 		
-		 	2. 의미
-		 		1) 리턴타입
-		 			(1) *
-		 			(2) void
-		 			(3) !void
-		 		2) 매개변수
-		 			(1) ..  모든 매개변수
-		 			(2) *	1개의 모든 매개변수
+			1. 기본 형식
+				execution(리턴타입 패키지.클래스.메소드(매개변수))
+			
+			2. 의미
+				1) 리턴타입
+					(1) *
+					(2) void
+					(3) !void
+				2) 매개변수
+					(1) ..  모든 매개변수
+					(2) *   1개의 모든 매개변수
 		*/
-	    /*
-	        AOP 기본 용어
-	        1. 조인포인트 : AOP를 동작시킬 수 있는 메소드 전체       (목록, 상세, 삽입, 수정, 삭제 메소드)
-	        2. 포인트컷   : 조인포인트 중에서 AOP를 동작시킬 메소드 (삽입, 수정, 삭제 메소드)
-	        3. 어드바이스 : 포인트컷에 동작시킬 AOP 동작 자체       (로그, 트랜잭션 등)
-	    */
 		
 		AspectJExpressionPointcut pointCut = new AspectJExpressionPointcut();
 		pointCut.setExpression("execution(* com.gdu.app08.service.*Impl.*Transaction(..))");
@@ -113,6 +114,4 @@ public class DBConfig {
 		
 	}
 	
-	
-
 }
