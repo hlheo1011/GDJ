@@ -11,7 +11,7 @@ import com.gdu.app11.service.EmpService;
 
 @Controller
 public class EmpController {
-	
+
 	@Autowired
 	private EmpService empService;
 	
@@ -23,9 +23,19 @@ public class EmpController {
 	@GetMapping("/emp/list")
 	public String list(HttpServletRequest request, Model model) {
 		empService.findAllEmployees(request, model);
-		return "employee/list";	// 맨 앞에'/' 는 붙여도 된다.
+		return "employee/list";
+	}
+	
+	@GetMapping("/emp/search")
+	public String search(HttpServletRequest request, Model model) {
+		empService.findEmployees(request, model);
+		return "employee/list";
 	}
 	
 	
-
+	
+	
+	
+	
+	
 }

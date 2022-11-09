@@ -10,7 +10,7 @@ public interface EmpService {
 	// Request,Response Session, Model을 최초 *선언* 할 수 있는것은 Controller 이다.
 	// Service은 받아다가 쓰는것이다.
 	public void findAllEmployees(HttpServletRequest request, Model model);
-		
+	public void findEmployees(HttpServletRequest request, Model model);
 	
 
 }

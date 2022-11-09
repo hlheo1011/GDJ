@@ -7,7 +7,6 @@
 <mapper namespace="com.gdu.app11.mapper.EmpMapper">
 
 	<!-- employees와 departments의 조인을 위한 resultMap -->
-
 	<resultMap type="DeptDTO" id="DeptMap">
 		<result column="DEPARTMENT_ID" property="departmentId" />
 		<result column="DEPARTMENT_NAME" property="departmentName" />
@@ -28,27 +27,53 @@
 		<collection resultMap="DeptMap" property="deptDTO"></collection>
 	</resultMap>
 
-
-	<!-- 1. 전체 레코드 개수 구하기 -->
 	<select id="selectAllEmployeesCount" resultType="int">
-	<!-- 전체 목록을 보여주는 거기 때문에, 받아올 파라미터는 필요 없다. -->
 		SELECT COUNT(*)
 		  FROM EMPLOYEES
 	</select>
 	
-	<select id="selectEmployeesByPage" resultMap="EmpMap">
-	<!-- 파라미터 타입을..무시..EmpMapper에는 int begin, int end라고 있지만, 모르겠으니 무시(	 	Diff Tools	 		 	Text, PDF, DOC, DOC?) -->
+	<select id="selectEmployeesByPage" parameterType="Map" resultMap="EmpMap">
 		SELECT B.*
 		  FROM (SELECT ROWNUM AS RN, A.*
 		          FROM (SELECT E.*, D.DEPARTMENT_NAME, D.LOCATION_ID
-		                  FROM DEPARTMENTS D INNER JOIN EMPLOYEES E
+		                  FROM DEPARTMENTS D RIGHT OUTER JOIN EMPLOYEES E
 		                    ON D.DEPARTMENT_ID = E.DEPARTMENT_ID
-		                 ORDER BY HIRE_DATE DESC) A) B
-		 WHERE B.RN BETWEEN #{param1} AND #{param2}
-	<!-- param1 = int begin / param2 = int end 이다. -->
-	<!-- 쓰앵님은 이렇게 하는거 안좋아하심, , , -->
+		                  ORDER BY HIRE_DATE DESC) A) B
+		 WHERE B.RN BETWEEN #{begin} AND #{end}		 
 	</select>
-
-
+	
+	<select id="selectFindEmployeesCount" parameterType="Map" resultType="int">
+		SELECT COUNT(*)
+		  FROM EMPLOYEES E
+		<where>
+		  <if test="column=='EMPLOYEE_ID' or column=='E.DEPARTMENT_ID'">${column} = #{query}</if>
+		  <if test="column=='LAST_NAME' or column=='FIRST_NAME' or column=='PHONE_NUMBER'">${column} LIKE '%' || #{query} || '%'</if>
+		  <if test="column=='HIRE_DATE'">${column} BETWEEN TO_DATE(#{start}, 'yyyy-mm-dd') AND TO_DATE(#{stop}, 'yyyy-mm-dd')</if>
+		  <if test="column=='SALARY'">${column} BETWEEN #{start} AND #{stop}</if>
+		</where>
+		<!--
+			WHERE #{column} = #{query}   #{}는 작은 따옴표(')로 묶어서 값을 치환
+	     	WHERE 'EMPLOYEE_ID' = '150'  잘못된 사용
+	     	
+	     	WHERE ${column} = #{query}   ${}는 그냥 치환
+			WHERE EMPLOYEE_ID = '150'    정상 동작
+		-->
+	</select>
+	
+	<select id="selectFindEmployees" parameterType="Map" resultMap="EmpMap">
+		SELECT B.*
+		  FROM (SELECT ROWNUM AS RN, A.*
+		          FROM (SELECT E.*, D.DEPARTMENT_NAME, D.LOCATION_ID
+		                  FROM DEPARTMENTS D RIGHT OUTER JOIN EMPLOYEES E
+		                    ON D.DEPARTMENT_ID = E.DEPARTMENT_ID
+		               <where>
+		                   <if test="column=='EMPLOYEE_ID' or column=='E.DEPARTMENT_ID'">${column} = #{query}</if>
+		                   <if test="column=='LAST_NAME' or column=='FIRST_NAME' or column=='PHONE_NUMBER'">${column} LIKE '%' || #{query} || '%'</if>
+		                   <if test="column=='HIRE_DATE'">${column} BETWEEN TO_DATE(#{start}, 'yyyy-mm-dd') AND TO_DATE(#{stop}, 'yyyy-mm-dd')</if>
+		                   <if test="column=='SALARY'">${column} BETWEEN #{start} AND #{stop}</if>
+		               </where>
+		                 ORDER BY HIRE_DATE DESC) A) B
+		 WHERE B.RN BETWEEN #{begin} AND #{end}
+	</select>
 
 </mapper>
