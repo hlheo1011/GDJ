@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gdu.app12.mapper.BbsMapper">
+
+	<select id="selectAllBbsCount" resultType="int">
+	
+	</select>
+	
+	<select id="selectAllBbsList" parameterType="Map" resultType="BbsDTO">
+	
+	</select>
+	
+	<insert id="insertBbs" parameterType="BbsDTO">
+	
+	</insert>
+	
+	<update id="updatePreviousReply" parameterType="BbsDTO">
+	
+	</update>
+	
+	<insert id="insertReply" parameterType="BbsDTO">
+	
+	</insert>
+	
+	<delete id="deleteBbs" parameterType="int">
+	
+	</delete>
+	
+</mapper>

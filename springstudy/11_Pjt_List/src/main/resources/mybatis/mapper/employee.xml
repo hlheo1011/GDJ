@@ -75,5 +75,11 @@
 		                 ORDER BY HIRE_DATE DESC) A) B
 		 WHERE B.RN BETWEEN #{begin} AND #{end}
 	</select>
+	
+	<select id="selectAutoCompeteList" parameterType="String" resultType="EmpDTO">
+		SELECT DISTINCT ${target}
+		  FROM EMPLOYEES
+		 WHERE ${target} LIKE CONCAT(#{param}, '%') 
+	</select>
 
 </mapper>
