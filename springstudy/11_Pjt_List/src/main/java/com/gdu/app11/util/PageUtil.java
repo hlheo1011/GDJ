@@ -21,7 +21,7 @@ public class PageUtil {
 	
 	public void setPageUtil(int page, int totalRecord) {
 		
-		// page, totalRecord 필드 저장
+		// page, totalRecord, totalRecord 필드 저장
 		this.page = page;
 		this.totalRecord = totalRecord;
 		
