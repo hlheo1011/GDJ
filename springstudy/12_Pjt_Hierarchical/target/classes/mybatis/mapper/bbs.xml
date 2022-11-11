@@ -17,7 +17,7 @@
 	
 	<select id="selectAllBbsList" parameterType="Map" resultType="BbsDTO">
 		SELECT A.RN, A.BBS_NO, A.WRITER, A.TITLE, A.IP, A.CREATE_DATE, A.STATE, A.DEPTH, A.GROUP_NO, A.GROUP_ORDER
-		  FROM (SELECT ROW_NUMBER() OVER(ORDER BY BBS_NO DESC) AS RN, BBS_NO, WRITER, TITLE, IP, CREATE_DATE, STATE, DEPTH, GROUP_NO, GROUP_ORDER
+		  FROM (SELECT ROW_NUMBER() OVER(ORDER BY GROUP_NO DESC, GROUP_ORDER ASC) AS RN, BBS_NO, WRITER, TITLE, IP, CREATE_DATE, STATE, DEPTH, GROUP_NO, GROUP_ORDER
 		          FROM BBS) A
 		 WHERE A.RN BETWEEN #{begin} AND #{end}
 	</select>
@@ -30,18 +30,27 @@
 	
 	</insert>
 	
+	<!--
+		updatePreviousReply 쿼리
+		1. 기존 답글들의 GROUP_ORDER를 1 증가시키는 쿼리문이다.
+		2. parameterType="BbsDTO"는 원글을 의미한다.
+	-->
 	<update id="updatePreviousReply" parameterType="BbsDTO">
-	
+		UPDATE BBS
+		   SET GROUP_ORDER = GROUP_ORDER + 1
+		 WHERE GROUP_NO = #{groupNo}
+		   AND GROUP_ORDER > #{groupOrder}
 	</update>
 	
-	<insert id="insertReply" parameterType="BbsDTO">
-	
+   <insert id="insertReply" parameterType="BbsDTO">
+      INSERT INTO BBS (BBS_NO, WRITER, TITLE, IP, CREATE_DATE, STATE, DEPTH, GROUP_NO, GROUP_ORDER)
+      VALUES (BBS_SEQ.NEXTVAL, #{writer}, #{title}, #{ip}, SYSDATE, 1, #{depth}, #{groupNo}, #{groupOrder})
 	</insert>
 	
 	<update id="deleteBbs" parameterType="int">
 		UPDATE BBS
 		   SET STATE = 0
-		 WHERE BBS_NO = #{bbsNo}	
+		 WHERE BBS_NO = #{bbsNo}
 	</update>
 	<!-- 계층형 게시판 특징이 삭제할 때 댓글이나 대댓글 관련된 애들이 삭제되면 안되니까 DELETE가 아닌 UPDATE로 한다. -->
 	

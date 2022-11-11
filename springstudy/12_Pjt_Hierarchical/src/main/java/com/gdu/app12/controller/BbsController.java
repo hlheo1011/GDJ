@@ -48,5 +48,12 @@ public class BbsController {
 	}
 	
 	
+	@PostMapping("/bbs/reply/add")
+	public String replyAdd(HttpServletRequest request) {
+		bbsService.addReply(request);
+		return "redirect:/bbs/list";
+	}
+	
+	
 	
 }

@@ -18,7 +18,6 @@
 			</div>
 			<div>
 				<input type="text" name="title" placeholder="제목" required>
-				
 			</div>
 			<div>
 				<button>작성완료</button>
