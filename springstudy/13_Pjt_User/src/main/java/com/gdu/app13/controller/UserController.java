@@ -1,0 +1,69 @@
+package com.gdu.app13.controller;
+
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.gdu.app13.service.UserService;
+
+@Controller
+public class UserController {
+	
+	@Autowired
+	private UserService userService;
+	
+	@GetMapping("/")
+	public String index() {
+		return "index";
+	}
+	
+	@GetMapping("/user/agree")
+	public String agree() {
+		return "user/agree";
+	}
+	
+	@GetMapping("/user/join/write")
+	public String joinWrite(@RequestParam(required=false) String location
+					      , @RequestParam(required=false) String promotion
+					      , Model model) {
+		// String joinWrite() << 이 자리는 파라미터값, 필수인지 아닌지 확인
+		// @RequestParma < 파라미터를 받아온다
+		// required < 필수인가 아닌가? false=필수가 아님
+		// String 이름 < 파라미터 name
+		// Model = 스프링에서 jsp로 값을 넘겨줄때 쓰는 방식
+		model.addAttribute("location", location);
+		model.addAttribute("promotion", promotion);
+		return "user/join";
+	}
+	
+	@ResponseBody
+	// @ResponseBody를 넣어놔야 ajax를 할 수 있다.
+	@GetMapping(value="/user/checkReduceId", produces=MediaType.APPLICATION_JSON_VALUE)
+	public Map<String, Object> checkReduceId(String id){
+		return userService.isReduceId(id);
+	}
+	
+	@ResponseBody
+	@GetMapping(value="/user/checkReduceEmail", produces=MediaType.APPLICATION_JSON_VALUE)
+	public Map<String, Object> checkReduceEmail(String email){
+		return userService.isReduceEmail(email);
+	}
+
+	@ResponseBody
+	@GetMapping(value="/user/sendAuthCode", produces=MediaType.APPLICATION_JSON_VALUE)
+	public Map<String, Object> sendAuthCode(String email){
+		return userService.sendAuthCode(email);
+	}
+	
+	
+	
+	
+	
+	
+}
