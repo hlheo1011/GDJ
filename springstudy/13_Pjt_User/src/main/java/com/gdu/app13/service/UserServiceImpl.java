@@ -12,18 +12,29 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
 import com.gdu.app13.mapper.UserMapper;
 import com.gdu.app13.util.SecurityUtil;
 
-import lombok.AllArgsConstructor;
-
-@AllArgsConstructor
+@PropertySource(value = {"classpath:email.properties"})
 @Service
 public class UserServiceImpl implements UserService {
 
+	// 이메일을 보내는 사용자 정보
+	@Value(value = "${mail.username}")
+	private String username;  // 본인 지메일 주소
+	
+	@Value(value="${mail.password}")
+	private String password;  // 발급 받은 앱 비밀번호
+	
+	@Autowired
 	private UserMapper userMapper;
+	
+	@Autowired
 	private SecurityUtil securityUtil;
 	
 	@Override
@@ -43,22 +54,19 @@ public class UserServiceImpl implements UserService {
 		result.put("isUser", userMapper.selectUserByEmail(email) != null);
 		return result;
 	}
-
 	
 	@Override
 	public Map<String, Object> sendAuthCode(String email) {
-		
-		
+			
 		// 인증코드 만들기
-		String authCode = securityUtil.getAuthCode(6);	// 수동으로 만든거
-		// String authCode = securityUtil.generateRandomString(6);	// 디펜던시가 해주는거(스프링)
-		System.out.println("발송된 인증 코드 : " + authCode);
+		String authCode = securityUtil.getAuthCode(6);  // String authCode = securityUtil.generateRandomString(6);
+		System.out.println("발송된 인증코드 : " + authCode);
 		
 		// 이메일 전송을 위한 필수 속성을 Properties 객체로 생성
 		Properties properties = new Properties();
-		properties.put("mail.smtp.host", "smtp.gmail.com");	 // 구글 메일로 보냄(구글 메일만 가능)
-		properties.put("mail.smtp.port", "587");			 // 구글 메일로 보내는 포트 번호
-		properties.put("mail.smtp.auth", "true"); 			 // 인증된 메일
+		properties.put("mail.smtp.host", "smtp.gmail.com");  // 구글 메일로 보냄(보내는 메일은 구글 메일만 가능)
+		properties.put("mail.smtp.port", "587");             // 구글 메일로 보내는 포트 번호
+		properties.put("mail.smtp.auth", "true");            // 인증된 메일
 		properties.put("mail.smtp.starttls.enable", "true"); // TLS 허용
 		
 		/*
@@ -71,11 +79,7 @@ public class UserServiceImpl implements UserService {
 			        (1) 앱 선택   : 기타
 			        (2) 기기 선택 : Windows 컴퓨터
 			        (3) 생성 버튼 : 16자리 앱 비밀번호를 생성해 줌(이 비밀번호를 이메일 보낼 때 사용)
-		 */
-		
-		// 이메일을 보내는 사용자 정보
-		String username = "hhr101110@gmail.com";	// 본인 지메일 주소
-		String password = "bckecbvwxshuklgq";		// 발급 받은 앱 비밀번호
+		*/
 		
 		// 사용자 정보를 javax.mail.Session에 저장
 		Session session = Session.getInstance(properties, new Authenticator() {
@@ -90,15 +94,14 @@ public class UserServiceImpl implements UserService {
 			
 			Message message = new MimeMessage(session);
 			
-			message.setFrom(new InternetAddress(username, "인증코드관리자"));			// 보내는사람
-			message.setRecipient(Message.RecipientType.TO, new InternetAddress(email));	// 받는사람
-			message.setSubject("[Application] 인증 요청 메일입니다.");
-			message.setContent("인증번호는 <strong>" + authCode + "</strong>입니다.", "text/html; charset=UTF-8");	// 내용
+			message.setFrom(new InternetAddress(username, "인증코드관리자"));            // 보내는사람
+			message.setRecipient(Message.RecipientType.TO, new InternetAddress(email));  // 받는사람
+			message.setSubject("[Application] 인증 요청 메일입니다.");                   // 제목
+			message.setContent("인증번호는 <strong>" + authCode + "</strong>입니다.", "text/html; charset=UTF-8");  // 내용
 			
+			Transport.send(message);  // 이메일 전송
 			
-			Transport.send(message);	// 이메일 전송
-			
-		} catch(Exception e){
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		
@@ -110,4 +113,5 @@ public class UserServiceImpl implements UserService {
 		return result;
 		
 	}
+
 }
