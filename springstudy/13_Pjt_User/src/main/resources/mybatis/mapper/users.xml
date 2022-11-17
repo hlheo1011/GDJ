@@ -70,4 +70,12 @@
 	       AND PW = #{pw}
 	</select>
 	
+	<!-- 로그인 유지 -->
+	<update id="updateSessionInfo" parameterType="UserDTO">
+		UPDATE USERS
+		   SET SESSION_ID = #{sessionId}
+		     , SESSION_LIMIT_DATE = #{sessionLimitDate}
+		 WHERE ID = #{id}
+	</update>
+	
 </mapper>

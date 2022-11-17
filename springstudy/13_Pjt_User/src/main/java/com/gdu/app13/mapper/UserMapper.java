@@ -17,5 +17,6 @@ public interface UserMapper {
 	public int deleteUser(int userNo);
 	public int insertRetireUser(RetireUserDTO retireUser);
 	public UserDTO selectUserByIdPw(UserDTO user);
+	public int updateSessionInfo(UserDTO user);
 	
 }

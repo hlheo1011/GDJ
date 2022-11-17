@@ -13,4 +13,7 @@ public interface UserService {
 	public void join(HttpServletRequest request, HttpServletResponse response);
 	public void retire(HttpServletRequest request, HttpServletResponse response);
 	public void login(HttpServletRequest request, HttpServletResponse response);
+	public void keepLogin(HttpServletRequest request, HttpServletResponse response);
+	public void logout(HttpServletRequest request, HttpServletResponse response);
+	
 }
