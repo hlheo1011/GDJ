@@ -21,6 +21,8 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
+	// 만들어만 두면 interceptopr : true (를 반환하면 계획대로 진행됨) / false (를 반환하면 인터셉터발생한다음에 실행을 막음)
+	
 	
 	@GetMapping("/")
 	public String index() {
@@ -70,7 +72,7 @@ public class UserController {
 		userService.join(request, response);
 	}
 	
-	@GetMapping("/user/retire")
+	@PostMapping("/user/retire")
 	public void retire(HttpServletRequest request, HttpServletResponse response) {
 		userService.retire(request, response);
 	}
@@ -93,6 +95,31 @@ public class UserController {
 		userService.logout(request, response);
 		return "redirect:/";
 	}
+	
+	@GetMapping("/user/check/form")
+	public String requiredLogin_checkForm() {
+		return "user/check";
+	}
+	
+	
+	@ResponseBody
+	@PostMapping(value="/user/check/pw", produces="application/json")
+	public Map<String, Object> requiredLogin_checkPw(HttpServletRequest request) {
+		return userService.confirmPassword(request);
+	}
+	
+	@GetMapping("/user/mypage")
+	public String requiredLogin_mypage() {
+		return "user/mypage";
+		
+	}
+	
+	@PostMapping("/user/modify/pw")
+	public void requiredLogin_modifyPw(HttpServletRequest request, HttpServletResponse response) {
+		userService.modifyPassword(request, response);
+	}
+	
+	
 	
 	
 	

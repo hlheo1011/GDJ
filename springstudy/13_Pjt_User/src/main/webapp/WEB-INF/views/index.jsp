@@ -15,23 +15,24 @@
 	<!-- 인덱스, 뷰, 조인 위에는 session이라는 공간이 있따 -->
 	<c:if test="${loginUser == null}">
 		<a href="${contextPath}/user/agree">회원가입페이지</a>
-		<a href="${contextPath}/user/login/form?url=">로그인</a>
+		<a href="${contextPath}/user/login/form">로그인</a>
 	</c:if>
 	
 	<!-- 로그인이 된 상태 -->
 	<c:if test="${loginUser != null}">
 		<div>
-			<a href="${contextPath}/user/mypage">${loginUser.name}</a> 님 반갑습니다.
+			<a href="${contextPath}/user/check/form">${loginUser.name}</a> 님 반갑습니다.
 		</div>
 		<a href="${contextPath}/user/logout">로그아웃</a>
-		<a id="lnk_retire" href="${contextPath}/user/retire">회원탈퇴</a>
+		<a href="javascript:fn_abc()">회원탈퇴</a>
+		<form id="lnk_retire" action="${contextPath}/user/retire" method="post"></form>
 		<script>
-			$('#lnk_retire').click(function(event){
-				if(confirm('탈퇴하시겠습니까?') == false) {
-					event.preventDefault();	// a 태그의 기본 이벤트인 href 속성 실행을 막는다.
-					return;
+			function fn_abc(){
+				if(confirm('탈퇴하시겠습니까?')) {
+					$('#lnk_retire').submit();
+					// event.preventDefault();	// a 태그의 기본 이벤트인 href 속성 실행을 막는다.
 				}
-			});
+			}
 		</script>
 	</c:if>
 

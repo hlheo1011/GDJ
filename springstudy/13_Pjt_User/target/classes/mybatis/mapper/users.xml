@@ -7,23 +7,33 @@
 <mapper namespace="com.gdu.app13.mapper.UserMapper">
 
 	<!-- update, delete, insert일 때 resultType이 int면 생략 가능 -->
-
-	<select id="selectUserById" parameterType="String" resultType="UserDTO">
+	
+	<!-- 아이디 중복체크1, 이메일 중복체크, 로그인, 로그인 유지를 이용한 로그인, 마이페이지 가기 전 비번 확인 -->
+	<select id="selectUserByMap" parameterType="Map" resultType="UserDTO">
 		SELECT USER_NO, ID, PW, NAME, GENDER, EMAIL, MOBILE, BIRTHYEAR, BIRTHDAY, POSTCODE, ROAD_ADDRESS, JIBUN_ADDRESS, DETAIL_ADDRESS, EXTRA_ADDRESS, AGREE_CODE, SNS_TYPE, JOIN_DATE, PW_MODIFY_DATE, INFO_MODIFY_DATE, SESSION_ID, SESSION_LIMIT_DATE
-	      FROM USERS
-	     WHERE ID = #{id}
+		  FROM USERS
+		 <where>
+			 <if test="id != null">
+			 	ID = #{id}
+			 </if>
+			 <if test="pw != null">
+			 	AND PW = #{pw}
+			 </if>
+			 <if test="email != null">
+			 	AND EMAIL = #{email}
+			 </if>
+			 <if test="sessionId != null">
+			 	AND SESSION_ID = #{sessionId}
+			 	AND SESSION_LIMIT_DATE > SYSDATE
+			 </if>
+		 </where>
 	</select>
-
+	
+	<!-- 아이디 중복체크2 -->
 	<select id="selectRetireUserById" parameterType="String" resultType="RetireUserDTO">
 		SELECT ID
 		  FROM RETIRE_USERS
 		 WHERE ID = #{id}
-	</select>
-	
-	<select id="selectUserByEmail" parameterType="String" resultType="UserDTO">
-		SELECT USER_NO, ID, PW, NAME, GENDER, EMAIL, MOBILE, BIRTHYEAR, BIRTHDAY, POSTCODE, ROAD_ADDRESS, JIBUN_ADDRESS, DETAIL_ADDRESS, EXTRA_ADDRESS, AGREE_CODE, SNS_TYPE, JOIN_DATE, PW_MODIFY_DATE, INFO_MODIFY_DATE, SESSION_ID, SESSION_LIMIT_DATE
-	      FROM USERS
-	     WHERE EMAIL = #{email}
 	</select>
 	
 	<!-- 일반회원가입 -->
@@ -62,20 +72,26 @@
 			(#{userNo}, #{id}, #{joinDate}, SYSDATE)
 	</insert>
 	
-	<!-- 로그인 -->
-	<select id="selectUserByIdPw" parameterType="UserDTO" resultType="UserDTO">
-		SELECT USER_NO, ID, PW, NAME, GENDER, EMAIL, MOBILE, BIRTHYEAR, BIRTHDAY, POSTCODE, ROAD_ADDRESS, JIBUN_ADDRESS, DETAIL_ADDRESS, EXTRA_ADDRESS, AGREE_CODE, SNS_TYPE, JOIN_DATE, PW_MODIFY_DATE, INFO_MODIFY_DATE, SESSION_ID, SESSION_LIMIT_DATE
-	      FROM USERS
-	     WHERE ID = #{id}
-	       AND PW = #{pw}
-	</select>
-	
-	<!-- 로그인 유지 -->
+	<!-- 로그인 유지를 위한 SESSION_ID/SESSION_LIMIT_DATE 업데이트 -->
 	<update id="updateSessionInfo" parameterType="UserDTO">
 		UPDATE USERS
 		   SET SESSION_ID = #{sessionId}
 		     , SESSION_LIMIT_DATE = #{sessionLimitDate}
 		 WHERE ID = #{id}
 	</update>
+	
+	<!-- 비밀번호 -->
+	<update id="updateUserPassword" parameterType="UserDTO">
+		UPDATE USERS
+		   SET PW = #{pw}
+		     , PW_MODIFY_DATE = SYSDATE
+		 WHERE USER_NO = #{userNo}	
+	</update>
+	
+	
+	
+	
+	
+	
 	
 </mapper>
