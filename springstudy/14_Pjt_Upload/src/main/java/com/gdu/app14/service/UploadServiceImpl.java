@@ -2,14 +2,21 @@ package com.gdu.app14.service;
 
 import java.io.File;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 import java.nio.file.Files;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -139,6 +146,87 @@ public class UploadServiceImpl implements UploadService {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+		
+		
+	}
+	
+	@Override
+	public void getUploadByNo(int uploadNo, Model model) {
+		model.addAttribute("upload", uploadMapper.selectuploadByNo(uploadNo));
+		model.addAttribute("attachList", uploadMapper.selectAttachList(uploadNo));	// "attachList"라는 이름으로 싣는다. select는 많이 불러도 트랜젝션이 필요없다. 트랜젝션대상도 아님.
+		
+	}
+	
+	@Override
+	public ResponseEntity<Resource> download(String userAgent, int attachNo) {
+		
+		
+		// 다운로드 할 첨부 파일의 정보(경로, 이름)
+		AttachDTO attach = uploadMapper.selectAttachByNo(attachNo);
+		File file = new File(attach.getPath(), attach.getFilesystem());
+		
+		// 반환할 Resource
+		Resource resource = new FileSystemResource(file);
+		
+		// Resource가 없으면 종료 (다운로드할 파일이 없음)
+		if(resource.exists() == false) {	// resource가 없으면(exists == false)
+			return new ResponseEntity<Resource>(HttpStatus.NOT_FOUND);
+		}
+		
+		//다운로드 횟수 증가
+		uploadMapper.updateDownloadCnt(attachNo);
+		
+		// 다운로드 되는 파일명(브라우저 마다 다르게 세팅)
+		String origin = attach.getOrigin();
+		try {
+			
+			// IE (userAget에 "Trident"가 포함되어 있음)
+			if(userAgent.contains("Trideng")) {
+				origin = URLEncoder.encode(origin, "UTF-8").replaceAll("\\+", " ");
+			}
+			// Edge (userAgent에 "Edg"가 포함되어 있음)
+			else if(userAgent.contains("Edg")) {
+				origin = URLEncoder.encode(origin, "UTF-8");
+					
+			}
+			// 나머지
+			else {
+				origin = new String(origin.getBytes("UTF-8"), "ISO-8859-1");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		// 다운로드 헤더만들기
+		HttpHeaders header = new HttpHeaders();
+		header.add("Content-Disposition", "attachment; filename=" + origin);
+		header.add("Content-Length", file.length() + "");
+		
+		return new ResponseEntity<Resource>(resource, header, HttpStatus.OK);
+	}
+	
+	@Override
+	public void removeAttachByAttachNo(int attachNo) {
+		
+		// 삭제할 Attach 정보 가져오기
+		AttachDTO attach = uploadMapper.selectAttachByNo(attachNo);
+		
+		// DB에서 Attach 정보 삭제
+		int result = uploadMapper.deleteAttachByAttachNo(attachNo);
+		
+		// 첨부 파일 삭제
+		if(result > 0) {
+			
+			// 첨부 파일을 File 객체로 만듬
+			File file = new File(attach.getPath(), attach.getFilesystem());
+			
+			// 삭제
+			if(file.exists()) { // 파일이 존재 하면
+				file.delete();
+			}
+			
 		}
 		
 		

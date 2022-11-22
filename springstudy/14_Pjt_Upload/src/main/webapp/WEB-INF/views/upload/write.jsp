@@ -24,7 +24,7 @@
 			// 첨부된 파일 순회
 			for(let i = 0; i < files.length; i++){
 				// 크기 체크
-				if(files[i].size > maxSize){
+		r		if(files[i].size > maxSize){
 					alert('10MB 이하의 파일만 첨부 할 수 있습니다.');
 					$(this).val(''); // 첨부된 파일을 모두 없애줌
 					return;

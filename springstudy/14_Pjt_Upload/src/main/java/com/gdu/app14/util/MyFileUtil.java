@@ -15,7 +15,7 @@ public class MyFileUtil {
 	
 	public String getFilename(String filename) {
 		
-		// 확장자 예회 처리
+		// 확장자 예외 처리
 		String extension = null;
 		if(filename.endsWith("tar.gz")) {
 			
