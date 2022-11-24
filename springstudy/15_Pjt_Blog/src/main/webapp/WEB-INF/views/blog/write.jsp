@@ -18,8 +18,6 @@
 	}
 
 	$(document).ready(function(){
-		
-		console.log(getContextPath());
 	
 		$('#content').summernote({
 			width: 800,
@@ -35,12 +33,47 @@
 				['para', ['ul', 'ol', 'paragraph']],
 				['height', ['height']],
 				['insert', ['link', 'picture', 'video']]
-			]
+			],
+			callbacks: {
+				// summernote 편집기에 이미지를 로드할 때
+				onImageUpload: function(files){
+					// 이미지를 ajax를 이용해서 서버로 보낼 때 가상 form 데이터 사용 
+					var formData = new FormData();
+					formData.append('file', files[0]);	// 파라미터 file, summernote 편집기에 추가된 이미지가 files[0]임
+					// 이미지를 HDD에 저장하고 경로를 받아오는 ajax
+					$.ajax({
+						type: 'post',
+						url: getContextPath() + '/blog/uploadImage',
+						data: formData,
+						contentType: false, // ajax 이미지 첨부용
+						processData: false,	// ajax 이미지 첨부용
+						dataType: 'json',	// HDD에 저장된 이미지의 경로를 json으로 받아옴
+						success: function(resData){
+							
+							$('#content').summernote('insertImage', resData.src);	// BlogServiceImpl의 saveSummernoteImage 메소드 에서 가져옴.
+							
+							/*
+								src=${contextPath}/load/image/aaa.jpg 값이 넘어온 경우
+								summernote는
+								<img src="${contextPath}/load/image/aaa.jpg"> 태그를 만든다.
+								
+								mapping=${contextPath}/load/image/aaa.jpg 인 파일의
+								location=C:\\upload\\aaa.jpg
+								
+								스프링에서 정적 자원 표시하는 방법은 servlet-context.xml에 있다.
+								이미지(정적 자원)의 mapping과 location을 servlet-context.xml에 작성해야 한다.
+
+								
+							*/
+						}
+					});	// ajax
+				}	// onImageUpload
+			}	// callbacks
 		});
 		
 		// 목록
 		$('#btn_list').click(function(){
-			loaction.href = getContextPath() + '/blog/list';
+			location.href = getContextPath() + '/blog/list';
 		});
 		
 		// 서브밋
@@ -61,13 +94,10 @@
 		<h1>작성 화면</h1>
 		
 		<form id="frm_write" action="${contextPath}/blog/add" method="post">
+		
 			<div>
 				<label for="title">제목</label>
 				<input type="text" name="title" id="title">
-			</div>
-			<div>
-				<label for="writer">작성자</label>
-				<input type="text" name="writer" id="writer">
 			</div>
 			<div>
 				<label for="content">내용</label>

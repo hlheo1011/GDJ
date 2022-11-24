@@ -67,7 +67,6 @@
 					<td>제목</td>
 					<td>IP</td>
 					<td>작성일</td>
-					<td></td>
 				</tr>
 			</thead>
 			<tbody>
