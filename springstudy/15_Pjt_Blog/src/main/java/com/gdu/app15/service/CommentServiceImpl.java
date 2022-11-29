@@ -58,6 +58,21 @@ public class CommentServiceImpl implements CommentService {
 		
 		return result;
 	}
+	
+	
+	@Override
+	public Map<String, Object> removeComment(int commentNo) {
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("isRemove", commentMapper.deleteComment(commentNo) == 1);	// deleteCommentNo가 1과 같으면 true, 아니면 false
+		return result;
+	}
+	
+	@Override
+	public Map<String, Object> addReply(CommentDTO reply) {
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("isAdd", commentMapper.insertReply(reply) == 1);		// 삽입의 결과가 1과 같으면 ture, 아니면 false 
+		return result;
+	}
 
 	
 	

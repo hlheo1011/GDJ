@@ -29,7 +29,7 @@
 			(BBS_SEQ.NEXTVAL, #{writer}, #{title}, #{ip}, SYSDATE, 1, 0, BBS_SEQ.CURRVAL, 0)
 	
 	</insert>
-	
+
 	<!--
 		updatePreviousReply 쿼리
 		1. 기존 답글들의 GROUP_ORDER를 1 증가시키는 쿼리문이다.

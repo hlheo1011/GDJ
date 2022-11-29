@@ -233,7 +233,7 @@ public class BlogServiceImpl implements BlogService {
 	         if(result > 0) {
 	            
 	            out.println("alert('삭제 성공');");
-	            out.println("location.href='" + request.getContextPath() + "/blog/detail?blogNo='" + blogNo + "';");
+	            out.println("location.href='" + request.getContextPath() + "/blog/list';");
 	            
 	         } else {
 	            
