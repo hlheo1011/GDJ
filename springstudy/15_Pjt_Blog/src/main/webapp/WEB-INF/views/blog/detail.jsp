@@ -260,7 +260,7 @@
 					$.ajax({
 						type: 'post',
 						url: '${contextPath}/comment/remove',
-						data: 'commentNo=' + $(this).data('comment_no'),
+						data: 'commentNo=' + $(this).data('comment_no'), // .btn_comment_remove의 data-comment_no 속성을 줌.
 						dataType: 'json',
 						success: function(resData){	// resData = {"isRemove": true}
 							if(resData.isRemove){
