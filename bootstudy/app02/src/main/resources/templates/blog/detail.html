@@ -1,74 +1,80 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
+<head th:replace="~{layout/header::head(|${blog.blogNo}번 게시글|)}"></head>
+<style>
+	.blind {
+		display: none;
+	}
+</style>
+<body>
 <div>
+
+	<div th:replace="~{layout/header::body_title}"></div>
 
 	<h1 th:text="${blog.title}"></h1>
 	
 	<div>
 		<!--
-		 	날짜 형식 지정하기
-		 	1. Date 타입		  ${#dates.format(날짜,'패턴')}
-		 	2. VARCHAR 타입 	  ${#temporals.format(날짜, '패턴')}
-		 	   LocalDate 타입	  ${#temporals.format(날짜, '패턴')}
-		 	   LocalTime 타입 	  ${#temporals.format(날짜, '패턴')}
-		 	   LocalDateTime 타입 ${#temporals.format(날짜, '패턴')}
-		 	3. Calendar 타입	  ${#temporals.format(날짜, '패턴')}
-		 	* '패턴'은 SimpleDateFormat의 패턴을 그대로 사용함
-		 	
-		 	
+			날짜 형식 지정하기
+			
+			1. Date 타입           ${#dates.format(날짜,'패턴')}
+			2. VARCHAR 타입        ${#temporals.format(날짜,'패턴')}
+			   LocalDate 타입      ${#temporals.format(날짜,'패턴')}
+			   LocalTime 타입      ${#temporals.format(날짜,'패턴')}
+			   LocalDateTime 타입  ${#temporals.format(날짜,'패턴')}
+			3. Calendar 타입       ${#calendars.format(날짜,'패턴')}
+			
+			* '패턴'은 SimpleDateFormat의 패턴을 그대로 사용함
 		-->
-		<span th:text="'▷ 작성일' + ${#dates.format(blog.createDate, 'yyyy. M. d HH:mm')}"></span>
-		<span th:text="|▷ 작성일 ${#dates.format(blog.createDate, 'yyyy. M. d HH:mm')}|"></span>
-		<!-- | << 내부에 있는것은 알아서 + 를 해준다 -->
+		<span th:text="'▷ 작성일'  + ${#dates.format(blog.createDate,'yyyy. M. d HH:mm')}"></span>
+		<br>
+		<span th:text="|▷ 작성일 ${#dates.format(blog.createDate,'yyyy. M. d HH:mm')}|"></span>
 		&nbsp;&nbsp;&nbsp;
-		<span th:text="'▷ 수정일' + ${#dates.format(blog.modifyDate, 'yyyy. M. d hh:mm')}"></span>
-		<span th:text="|▷ 수정일 ${#dates.format(blog.modifyDate, 'yyyy. M. d hh:mm')}|"></span>
-		
+		<span th:text="'▷ 수정일 ' + ${#dates.format(blog.modifyDate, 'yyyy. M. d a hh:mm')}"></span>
+		<span th:text="|▷ 수정일 ${#dates.format(blog.modifyDate, 'yyyy. M. d a hh:mm')}|"></span>
 	</div>
 	
 	<div>
-		<!-- 
+		<!--
 			숫자 형식 지정하기
 			
-			1. 정수 형식	${#numbers.formatInteger(숫자,자릿수,천단위구분기호)}
-			2. 실수 형식	${#numbers.formatDecimal(숫자,정수자릿수,천단위구분기호,소수자릿수,정수소수구분자)}
+			1. 정수 형식      ${#numbers.formatInteger(숫자,자릿수,천단위구분기호)}
+			2. 실수 형식      ${#numbers.formatDecimal(숫자,정수자릿수,천단위구분기호,소수자릿수,정수소수구분자)}
 		-->
-		<span th:text="'조회수 + ${#numbers.formatInteger(blog.hit,1,'COMMA'}'"></span>
+		<span th:text="'조회수 ' + ${#numbers.formatInteger(blog.hit,1,'COMMA')}"></span>
+		<span th:text="|조회수 ${#numbers.formatInteger(blog.hit,1,'COMMA')}|"></span>
 	</div>
 	
 	<hr>
 	
-	<div>
-		${blog.content}
-	</div>
+	<div th:utext="${blog.content}"></div>
 	
 	<div>
 		<form id="frm_btn" method="post">
-			<input type="hidden" name="blogNo" value="${blog.blogNo}">
+			<input type="hidden" name="blogNo" th:value="${blog.blogNo}">
 			<input type="button" value="수정" id="btn_edit_blog">
 			<input type="button" value="삭제" id="btn_remove_blog">
-			<input type="button" value="목록" onclick="location.href='${contextPath}/blog/list'">
+			<input type="button" value="목록" onclick="location.href='/blog/list'">
 		</form>
 		<script>
 			$('#btn_edit_blog').click(function(){
-				$('#frm_btn').attr('action', '${contextPath}/blog/edit');
+				$('#frm_btn').attr('action', '/blog/edit');
 				$('#frm_btn').submit();
 			});
 			$('#btn_remove_blog').click(function(){
 				if(confirm('블로그를 삭제하면 블로그에 달린 댓글을 더 이상 확인할 수 없습니다. 삭제하시겠습니까?')){
-					$('#frm_btn').attr('action', '${contextPath}/blog/remove');
+					$('#frm_btn').attr('action', '/blog/remove');
 					$('#frm_btn').submit();
 				}
 			});
-		</script> 
+		</script>
 	</div>
 	
 	<hr>
 	
 	<span id="btn_comment_list">
 		댓글
-		<span id="comment_count"></span>개 
+		<span id="comment_count"></span>개
 	</span>
 	
 	<hr>
@@ -80,7 +86,6 @@
 	
 	<hr>
 	
-	
 	<div>
 		<form id="frm_add_comment">
 			<div class="add_comment">
@@ -91,16 +96,19 @@
 					<input type="button" value="작성완료" id="btn_add_comment">
 				</div>
 			</div>
-			<input type="hidden" name="blogNo" value="${blog.blogNo}">
+			<input type="hidden" name="blogNo" th:value="${blog.blogNo}">
 		</form>
 	</div>
 	
 	<!-- 현재 페이지 번호를 저장하고 있는 hidden -->
 	<input type="hidden" id="page" value="1">
 	
+	<!--/*
+		자바스크립트 내부에서 thymeleaf의 expression 사용을 위해서 th:inline="javascript" 속성을 사용한다.
+		thymeleaf의 expression은 [[]]로 묶는다.
+	*/-->
+	<script th:inline="javascript">
 	
-	<script>
-		
 		// 함수 호출
 		fn_commentCount();
 		fn_switchCommentList();
@@ -111,22 +119,17 @@
 		fn_switchReplyArea();
 		fn_addReply();
 		
-		// 전역 변수 page (모든 함수에서 사용 가능)
-		var page = 1;
-		
-		
 		// 함수 정의
 		function fn_commentCount(){
 			$.ajax({
 				type: 'get',
-				url: '${contextPath}/comment/getCount',
-				data: 'blogNo=${blog.blogNo}',
+				url: '/comment/getCount',
+				data: 'blogNo=[[${blog.blogNo}]]',
 				dataType: 'json',
-				success: function(resData){		// resData = {"commentCount" : 개수}
+				success: function(resData){  // resData = {"commentCount": 개수}
 					$('#comment_count').text(resData.commentCount);
 				}
 			});
-			
 		}
 		
 		function fn_switchCommentList(){
@@ -135,37 +138,34 @@
 			});
 		}
 		
-		
-		
 		function fn_addComment(){
 			$('#btn_add_comment').click(function(){
 				if($('#comment').val() == ''){
 					alert('댓글 내용을 입력하세요');
-					return;	// ajax 실행을 막음
+					return;
 				}
 				$.ajax({
 					type: 'post',
-					url: '${contextPath}/comment/add',
+					url: '/comment/add',
 					data: $('#frm_add_comment').serialize(),
 					dataType: 'json',
-					success: function(resData){		// resData = {"isAdded", true}
+					success: function(resData){  // resData = {"isAdd", true}
 						if(resData.isAdd){
 							alert('댓글이 등록되었습니다.');
 							$('#content').val('');
-							fn_commentList();	// 댓글 목록 가져와서 뿌리는 함수
-							fn_commentCount();	// 댓글 목록 개수 갱신하는 함수
+							fn_commentList();   // 댓글 목록 가져와서 뿌리는 함수
+							fn_commentCount();  // 댓글 목록 개수 갱신하는 함수
 						}
-						
 					}
-				})
+				});
 			});
 		}
 		
 		function fn_commentList(){
 			$.ajax({
 				type: 'get',
-				url: '${contextPath}/comment/list',
-				data: 'blogNo=${blog.blogNo}&page=' + $('#page').val(),	// page도 넘겨줘야함
+				url: '/comment/list',
+				data: 'blogNo=[[${blog.blogNo}]]&page=' + $('#page').val(),
 				dataType: 'json',
 				success: function(resData){
 					/*
@@ -182,8 +182,8 @@
 						}
 					*/
 					// 화면에 댓글 목록 뿌리기
-					$('#comment_list').empty();	// 댓글 초기화
-					$.each(resData.commentList, function(i, comment){	// 반복문 (인덱스와, 변수명(댓글 하나하나))
+					$('#comment_list').empty();
+					$.each(resData.commentList, function(i, comment){
 						var div = '';
 						if(comment.depth == 0){
 							div += '<div>';
@@ -192,15 +192,13 @@
 						}
 						if(comment.state == 1) {
 							div += '<div>';
-							// 정상적인 댓글 보여주기
 							div += comment.content;
 							// 작성자만 삭제할 수 있도록 if 처리 필요
 							div += '<input type="button" value="삭제" class="btn_comment_remove" data-comment_no="' + comment.commentNo + '">';
-							// 답글만 답글을 달 수 있도록 if 처리(depth가 0이면 댓글, depth가 1이면 답글)
-							if(comment.depth == 0){
-								div += '<input type="button" value="답글" class="btn_reply_area">';								
+							if(comment.depth == 0) {
+								div += '<input type="button" value="답글" class="btn_reply_area">';
 							}
-							div += '</div>'
+							div += '</div>';
 						} else {
 							if(comment.depth == 0) {
 								div += '<div>삭제된 댓글입니다.</div>';
@@ -210,23 +208,20 @@
 						}
 						div += '<div>';
 						moment.locale('ko-KR');
-						div += '<span style="font-size: 12px; color: silver;">' + moment(comment.createDate).format('YYYY. MM. DD hh:mm') + '</span>';	// js폴더 안의 moment-with-locales (시간 설정 라이브러리)
+						div += '<span style="font-size: 12px; color: silver;">' + moment(comment.createDate).format('YYYY. MM. DD hh:mm') + '</span>';
 						div += '</div>';
-						div += '<div style="margin-left: 40px;" class="reply_area blind">';	// reply_area를 toggle 시켜준다.
-						div += '<form class="frm_reply">';  // form에다가 id 줄 수 없다. 여기는 반복문 안이기 때문에..!
+						div += '<div style="margin-left: 40px;" class="reply_area blind">';
+						div += '<form class="frm_reply">';
 						div += '<input type="hidden" name="blogNo" value="' + comment.blogNo + '">';
-						div += '<input type="hidden" name="groupNo" value="' + comment.commentNo + '">';
+						div += '<input type="hidden" name="groupNo" value="' + comment.groupNo + '">';
 						div += '<input type="text" name="content" placeholder="답글을 작성하려면 로그인을 해주세요">';
 						// 로그인한 사용자만 볼 수 있도록 if 처리
-						div += '<input type="button" value="답글작성완료" class="btn_reply_add">';	// ajax이기때문에 submit이 아니다. submit은 mvc하겠다는 소리이다.
-						
+						div += '<input type="button" value="답글작성완료" class="btn_reply_add">';
 						div += '</form>';
 						div += '</div>';
 						div += '</div>';
 						$('#comment_list').append(div);
-						$('#comment_list').append('<div style="border-bottom: 1px dotted gray;"></div>');	// 점선
-						
-						
+						$('#comment_list').append('<div style="border-bottom: 1px dotted gray;"></div>');
 					});
 					// 페이징
 					$('#paging').empty();
@@ -251,11 +246,10 @@
 					$('#paging').append(paging);
 				}
 			});
-		}	// fn_commentList
-		
+		}  // fn_commentList
 		
 		function fn_changePage(){
-			$(document).on('click', '.enable_link', function(){	// js로 만든 애는 $(.enable_link)를 하지 못한다. (링크를 주지 못한다) js로 만든 동적 버튼은 이벤트를 이런식으로 줘야 한다.
+			$(document).on('click', '.enable_link', function(){
 				$('#page').val( $(this).data('page') );
 				fn_commentList();
 			});
@@ -266,22 +260,20 @@
 				if(confirm('삭제된 댓글은 복구할 수 없습니다. 댓글을 삭제할까요?')){
 					$.ajax({
 						type: 'post',
-						url: '${contextPath}/comment/remove',
-						data: 'commentNo=' + $(this).data('comment_no'), // .btn_comment_remove의 data-comment_no 속성을 줌.
+						url: '/comment/remove',
+						data: 'commentNo=' + $(this).data('comment_no'),
 						dataType: 'json',
-						success: function(resData){	// resData = {"isRemove": true}
+						success: function(resData){  // resData = {"isRemove": true}
 							if(resData.isRemove){
 								alert('댓글이 삭제되었습니다.');
 								fn_commentList();
 								fn_commentCount();
 							}
-							
 						}
 					});
 				}
 			});
-		}	// fn_removeComment
-		
+		}
 		
 		function fn_switchReplyArea(){
 			$(document).on('click', '.btn_reply_area', function(){
@@ -297,33 +289,22 @@
 				}
 				$.ajax({
 					type: 'post',
-					url: '${contextPath}/comment/reply/add',
-					data: $(this).closest('.frm_reply').serialize(), // 이건 안됨니다 $('.frm_reply').serialize(), form이 많아서 안됨
+					url: '/comment/reply/add',
+					data: $(this).closest('.frm_reply').serialize(),  // 이건 안 됩니다 $('.frm_reply').serialize(),
 					dataType: 'json',
-					success: function(resData){	// resData = {"isAdd", true}
+					success: function(resData){  // resData = {"isAdd", true}
 						if(resData.isAdd){
 							alert('답글이 등록되었습니다.');
 							fn_commentList();
 							fn_commentCount();
 						}
 					}
-					
-				})
+				});
 			});
 		}
 		
-		
-	
 	</script>
 	
-	
-	
-	
-	
-	
-	
-
-
 </div>
 
 </body>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/header::head('작성')}"></head>
+<script>
+	
+	$(document).ready(function(){
+		
+		// summernote
+		$('#content').summernote({
+			width: 800,
+			height: 400,
+			lang: 'ko-KR',
+			toolbar: [
+			    // [groupName, [list of button]]
+			    ['style', ['bold', 'italic', 'underline', 'clear']],
+			    ['font', ['strikethrough', 'superscript', 'subscript']],
+			    ['fontsize', ['fontsize']],
+			    ['color', ['color']],
+			    ['para', ['ul', 'ol', 'paragraph']],
+			    ['height', ['height']],
+			    ['insert', ['link', 'picture', 'video']]
+			],
+			callbacks: {
+				 
+				onImageUpload: function(files){
+					for(let i = 0; i < files.length; i++) {
+						var formData = new FormData();
+						formData.append('file', files[i]);
+						$.ajax({
+							type: 'post',
+							url: '/blog/uploadImage',
+							data: formData,
+							contentType: false,
+							processData: false, 
+							dataType: 'json',    
+							success: function(resData){
+								$('#content').summernote('insertImage', resData.src);
+								$('#summernote_image_list').append($('<input type="hidden" name="summernoteImageNames" value="' + resData.filesystem + '">'));
+							}
+						});  // ajax
+					}  // for
+				}  // onImageUpload
+			}  // callbacks
+		});
+		
+		// 목록
+		$('#btn_list').click(function(){
+			location.href = '/blog/list';
+		});
+		
+		// 서브밋
+		$('#frm_write').submit(function(event){
+			if($('#title').val() == ''){
+				alert('제목은 필수입니다.');
+				event.preventDefault();
+				return;
+			}
+		});
+		
+	});
+	
+</script>
+<body>
+<div>
+	
+	<div th:replace="~{layout/header::body_title}"></div>
+
+	<h1>작성 화면</h1>
+	
+	<form id="frm_write" th:action="@{/blog/add}" method="post">
+	
+		<div>
+			<label for="title">제목</label>
+			<input type="text" name="title" id="title">
+		</div>
+		
+		<div>
+			<label for="content">내용</label>
+			<textarea name="content" id="content"></textarea>				
+		</div>
+		
+		<!-- 써머노트에서 사용한 이미지 목록(등록 후 삭제한 이미지도 우선은 모두 올라감: 서비스단에서 지움) -->
+		<div id="summernote_image_list"></div>
+		
+		<div>
+			<button>작성완료</button>
+			<input type="reset" value="입력초기화">
+			<input type="button" value="목록" id="btn_list">
+		</div>
+		
+	</form>
+	
+</div>
+
+</body>
+</html>

@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="jdk.internal.org.jline.utils.InputStreamReader"/>
-    <fullyQualifiedTypeName name="org.w3c.dom.Node"/>
-    <fullyQualifiedTypeName name="java.lang.UnsupportedClassVersionError"/>
-    <fullyQualifiedTypeName name="java.lang.UnsupportedOperationException"/>
-    <fullyQualifiedTypeName name="java.io.InputStream"/>
-    <fullyQualifiedTypeName name="javax.management.RuntimeErrorException"/>
-    <fullyQualifiedTypeName name="java.lang.RuntimeException"/>
-    <fullyQualifiedTypeName name="javax.xml.parsers.DocumentBuilderFactory"/>
-    <fullyQualifiedTypeName name="javax.xml.parsers.DocumentBuilder"/>
-    <fullyQualifiedTypeName name="org.w3c.dom.Document"/>
     <fullyQualifiedTypeName name="org.w3c.dom.NodeList"/>
     <fullyQualifiedTypeName name="org.w3c.dom.Element"/>
     <fullyQualifiedTypeName name="api.Accident"/>
@@ -60,4 +50,14 @@
     <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
     <fullyQualifiedTypeName name="org.json.JSONArray"/>
+    <fullyQualifiedTypeName name="ex01_anonymous_object.sec02.Car"/>
+    <fullyQualifiedTypeName name="java.lang.Override"/>
+    <fullyQualifiedTypeName name="ex01_anonymous_object.sec03.Car"/>
+    <fullyQualifiedTypeName name="ex01_anonymous_object.sec04.Car"/>
+    <fullyQualifiedTypeName name="ex02_lambda.sec02.Car"/>
+    <fullyQualifiedTypeName name="ex03_functional_interface.sec01.MyInterface1"/>
+    <fullyQualifiedTypeName name="ex03_functional_interface.sec02.MyInterface2"/>
+    <fullyQualifiedTypeName name="ex03_functional_interface.sec03.MyInterface3"/>
+    <fullyQualifiedTypeName name="java.lang.FunctionalInterface"/>
+    <fullyQualifiedTypeName name="ex03_functional_interface.sec04.Calculator"/>
 </qualifiedTypeNameHistroy>
