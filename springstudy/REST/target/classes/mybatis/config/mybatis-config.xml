@@ -11,9 +11,7 @@
 	</settings>
 	
 	<typeAliases>
-		<typeAlias type="com.gdu.app13.domain.RetireUserDTO" alias="RetireUserDTO" />
-		<typeAlias type="com.gdu.app13.domain.SleepUserDTO" alias="SleepUserDTO" />
-		<typeAlias type="com.gdu.app13.domain.UserDTO" alias="UserDTO" />
+		<typeAlias type="com.gdu.rest.domain.MemberDTO" alias="MemberDTO" />
 	</typeAliases>
 
 </configuration>
